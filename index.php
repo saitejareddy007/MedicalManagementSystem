@@ -14,7 +14,6 @@
 <body>
 	<ul id="header1">
 		<span id="Home">
-			
 		</span>
 	</ul>
 	<div id="body">
