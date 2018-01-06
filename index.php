@@ -14,11 +14,7 @@
 <body>
 	<ul id="header1">
 		<span id="Home">
-			<a id="homeM" href="#">
-				<span id="home"><img id="img" src="logo.png">
-				<div id="text">Home</div>
-				</span>
-			</a>
+			
 		</span>
 	</ul>
 	<div id="body">
