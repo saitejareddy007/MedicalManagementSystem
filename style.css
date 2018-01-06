@@ -1,0 +1,270 @@
+body{
+	margin:0 auto;
+	background:#e6ecf0;
+	background-image: url("img.jpg");
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #cccccc;
+	height:1000px;
+}
+#cart{
+	float: right;
+	width: 50px;
+	height: 50px;
+}
+#header1{	
+	height:10%;
+	box-shadow:0px 0px 2px #888888; 
+	background:none;
+	box-shadow: 1px 1px 10px;
+	width: 100%;
+	font-size:13px;
+	position: fixed;
+	margin-top: 0px; 
+	padding:0px 0px 0px 220px;
+	list-style: none;
+}
+#hheader1{	
+	height:8%;
+	box-shadow:0px 0px 2px #888888;
+	box-shadow: 1px 1px 10px;
+	background:none;
+	width: 100%;
+	font-size:13px;
+	top:-20px;
+	position: relative; 
+	padding:0px 10% 0px 0px;
+	list-style: none;
+}
+
+#text{
+	margin-top: -23px;
+	margin-left: 25px;
+}
+#home{
+	width: 100%;
+}
+#Home{
+	float:left;
+	width: 60px;
+	max-height: 45px;
+	margin:0 auto;
+	font-weight: bold;
+	color:#797979;
+	max-height: 30px;
+	padding-right: 12px;
+	padding-bottom: 13.5px; 
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+#Home:hover{
+	color:#1b95e0;
+	border-bottom: 2px solid #1b95e0;
+}
+#img{
+	width:27px;
+	height:27px;
+	padding-right: 2px;
+	padding-top: 10px;
+}
+#About{
+	margin-top:-8px;
+	float:left;
+	font-size: 13px;
+	font-weight: bold;
+	padding:15px 12px 15px 12px;
+	color:#797979;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+#About:hover{
+	color:#1b95e0;
+	border-bottom: 2px solid #1b95e0;
+}
+#body{
+	background: white;
+	opacity:0.50;
+  	-moz-opacity:.50; 
+  	filter:alpha(opacity=50);
+	box-shadow: 10px 10px 1000px;
+	border-radius: 10px;
+	height:327px;
+	width:65.25%;
+	border: 1px solid rgba(0,0,0,0.2);
+	position:fixed;
+	float:left;
+	left:17.25%;
+	top:20%;
+}
+#hbody{
+	background: white;
+	opacity:0.70;
+  	-moz-opacity:.70; 
+  	filter:alpha(opacity=50);
+	margin: 0 auto;
+	border-radius: 5px;
+	align-items: center;
+	align-content: center;
+	align-self: center;
+	text-align: center;
+	height:327px;
+	width:65.25%;
+	border: 1px solid rgba(0,0,0,0.2);
+	position:relative;
+	float:left;
+	left:25%;
+	top:54px;
+}
+
+#obody{
+	background: white;
+	opacity:0.70;
+  	-moz-opacity:.70; 
+  	filter:alpha(opacity=50);
+	border-radius: 500px;
+	box-shadow: 10px 10px 1000px;
+	align-items: center;
+	align-content: center;
+	align-self: center;
+	text-align: center;
+	height:327px;
+	width:65.25%;
+	border: 1px solid rgba(0,0,0,0.2);
+	position:relative;
+	float:left;
+	left:17.25%;
+	top:100px;
+}
+
+#createAccountBody{
+	background: white;
+	border-radius: 5px;
+	height:500px;
+	width:65.25%;
+	border: 1px solid rgba(0,0,0,0.2);
+	position:fixed;
+	float:left;
+	left:17.25%;
+	top:54px;
+}
+#bodypart1{
+	padding: 5% 0 0 10%;
+	height: 68%;
+}
+#hbodypart1{
+	padding-top: 2%;
+	max-height: 80%;
+}
+#headline{
+	font-size:24px;
+	font-weight:bold;
+	padding: 0px 0px 15px 0px;
+	line-height: .8;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.remember{
+	font-size:13px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+#bodypart2{
+	padding: 1% 0 0 120px;
+	color:#292f33;
+	border-radius:0px 0px 5px 5px;
+	border: 1px solid rgba(0,0,0,0.2);
+	background:none;
+	height:15%;
+	}
+.signup{
+	color:#1da1f2;
+	text-decoration:none;
+}
+.signup:hover{
+	text-decoration:underline;
+}
+.Activate{
+	color:#1da1f2;
+	text-decoration:none;
+}
+.Activate:hover{
+	text-decoration:underline;
+}
+.new_user{
+	color:#8899a6;
+	font-size:13px;
+	font-weight:normal;
+	line-height: 20px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+input{
+	border: 1px solid #e1e8ed;
+	border-radius:3px;
+	padding:4px;
+	margin-bottom: 10px;
+	transition: background .2s linear;
+	font-size:13px;
+	font-family: bold;
+	color: black;
+	line-height:20px;
+	background: none;
+	background-color:none;
+	width:280px;
+}
+input:focus{
+	border-color:#1b95e0;
+}
+input:hover{
+	border-color:#1b95e0;
+}
+#check{
+	width: 10px;
+}
+#forget{
+	 font-size:13px;
+	 font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	 color:#1da1f2; 
+	 text-decoration: none; 
+	 background:transparent;
+	 transition:0s;
+}
+#forget:hover{
+	text-decoration: underline;
+}
+button{
+	background-color:#1da1f2;
+	margin-top:16px;
+	border: 0px solid #3b88c3;
+	color:white;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	border-radius: 100px;
+    box-shadow: none;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+}
+button:hover{
+	background: white;
+	color: #1da1f2;
+}
+
+#addCartButton{
+	background-color:#1da1f2;
+	border: 0px solid #3b88c3;
+	color:white;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	border-radius: 100px;
+    box-shadow: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+}
+#tabletList{
+	overflow-y: scroll;
+}

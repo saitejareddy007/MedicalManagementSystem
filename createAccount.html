@@ -1,0 +1,42 @@
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" type="image/x-icon" href="img.png">
+	<script type="text/javascript" src="script.js"></script>
+	<title>MMS</title>
+</head>
+<body>
+	<div id="header1">
+		<h1>Welcome to MMS</h1>
+	</div>
+	<div id="createAccountBody">
+		<div id="bodypart1">
+			<form action="accountCreation.php" method="post" name="createAccountForm" onsubmit="return validateCreateAccountForm()" >
+				<table>
+					<tr>
+						<td><div id="headline">Sign up Here</div><td>
+					</tr>
+						<tr>
+							<td><input name="username" type="text" placeholder="Phone ,email or username">
+						</tr>
+						<tr>
+							<td><input name="password" type="password" placeholder="Password">
+						</tr>
+						<tr>
+							<td><input name="rePassword" type="password" placeholder="Re-Enter Password">
+						</tr>
+						<tr>
+							<td><input name="fullName" type="text" placeholder="Full Name">
+						</tr>
+						<tr>
+							<td><input name="contactNumber" type="text" placeholder="Contact Number">
+						</tr>
+						<tr>
+							<td><button type="submit">Sign Up</button></td>
+						</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
