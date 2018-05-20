@@ -11,10 +11,12 @@
 		<script type="text/javascript" src="script.js"></script>
 		<title>MMS</title>
 	</head>
+	
 <body>
 	<ul id="header1">
-		<span>
-			<h2 style = "float:left; color: white;">Medical Management System</h2>
+		<span><img style="width: 40px;height: 30px;" src="mms.png"></span>
+		<span style = "font-size: 25px; color: white;" >
+			Medical Management System
 		</span>
 	</ul>
 	<div id="body">
@@ -43,7 +45,7 @@
 			</form>
 		</div>
 		<div id="bodypart2">
-			<p class="new_user">New to Twitter?<a href="/MedicalManagementSystem/createAccount.html" class="Signup"> Sign up now &#xbb;</a></p>
+			<p class="new_user">New to MMS?<a href="/MedicalManagementSystem/createAccount.html" class="Signup"> Sign up now &#xbb;</a></p>
 		</div>
 	</div>
 </body>
