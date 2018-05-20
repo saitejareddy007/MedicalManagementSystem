@@ -13,7 +13,8 @@
 	</head>
 <body>
 	<ul id="header1">
-		<span id="Home">
+		<span>
+			<h2 style = "float:left; color: white;">Medical Management System</h2>
 		</span>
 	</ul>
 	<div id="body">
@@ -21,7 +22,7 @@
 			<form action="login.php" name="loginForm" method="post" onsubmit="return validateLoginForm()">
 				<table>
 					<tr>
-						<td><div id="headline">Log in Here</div><td>
+						<td><div id="headline">Login Here</div><td>
 					</tr>
 					
 					<tr>
