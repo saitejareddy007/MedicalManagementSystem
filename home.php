@@ -18,18 +18,20 @@
 		<title>MMS</title>
 	</head>
 <body>
-	<div id="hheader1">
-		<div>
+	<div id="header1">
+		<div style="width: 200px;float: left; margin-left: 20px;">
 			<h2>Welcome <?php echo $fullName; ?></h2>
-		<div>
-		<div style="float: right;">
-			<a href="logout.php">Logout</a>
+		</div>
+		<div style="float: right; padding: 30px;margin-right: 20px; font-size: 18px;">
+			<a href="logout.php" style="text-decoration: none;"><b>Logout</b></a>
         </div>
-		<div id="cart" ><a href="cart.php">
-          <span>Items</span><span style="width: 100%; height: 100%;" class="glyphicon glyphicon-shopping-cart"></span></a>
+		<div id="cart" style="margin: 0 auto; margin-right: 40px; padding: 30px; font-family: bold;">
+			<a href="cart.php">
+          		<span style="width: 100%; font-size: 18px; height: 100%;" class="glyphicon glyphicon-shopping-cart"><b>Items</b></span>
+          	</a>
         </div> 
 	</div>
-	<div id="hbody">
+	<div id="body" style="text-align: center;">
 		<div id="hbodypart1">
 			<input type="search" onchange="showTablets(this.value)" name="tabletSearch" placeholder="Search the medicine">
 		<div id="tabletList"></div>	
