@@ -9,10 +9,6 @@
 	<head>
 		<link rel="stylesheet" href="style.css">
 		<style type="text/css">
-	#logout{
-		float: right;	
-	}
-	
 	#cart_content{
 		margin:0 auto;
 		border: solid 1px black;
@@ -21,8 +17,10 @@
 	  	-moz-opacity:.50; 
 	  	filter:alpha(opacity=50);
 		box-shadow: 10px 10px 100px;
-		width: 50%;
-		height: 90%;
+		width: 60%;
+		height: 80%;
+		min-width: 400px;
+		min-height: 520px;
 		margin-top: 100px;
 		border-radius: 10px;
 	}
@@ -33,7 +31,6 @@
 	}
 	#top{
 		height: 22%;
-
 	}
 	#topl{
 		padding:0 1% 0 1%;
@@ -99,16 +96,19 @@
 		<div style="float:left; width: 115px;">
 			<img style="width: 80px; height: 45px; padding: 18 5% 10% 20px;" src="mms.png">
 		</div>
-		<div>
+		<div style="float:left; width: 500px;">
 			<p style="font-size:24px; text-shadow: 2px 2px 2px black; color: white;" >Medical Management System
 			</p>
 		</div>
+		<div style="float:right; padding: 30px; margin-right: 20px; font-size: 18px;">
+			<a href="logout.php" style=" color: #337ab7; text-decoration: none;"><b>Logout</b></a>
+        </div>
 	</div>
 	<div id="cart_content">
 	<div id="top_content">
 		<div id="top">
 			<div id="topl">
-				<h1>View cart</h1> 
+				<h1 style="margin-bottom: 0px;">View cart</h1> 
 				<a href="home.php">Go back to products page</a>
 			</div>
 			<div id="topr">
