@@ -1,8 +1,9 @@
 <?php
 	session_start();
 	if(isset($_SESSION['id'])){
-		header('location: /MedicalManagementSystem/home.php');
+		include 'home.php';
 	}
+	else{
 ?>
 <html>
 	<head>
@@ -13,12 +14,15 @@
 	</head>
 	
 <body>
-	<ul id="header1">
-		<span><img style="width: 40px;height: 30px;" src="mms.png"></span>
-		<span style = "font-size: 25px; color: white;" >
-			Medical Management System
-		</span>
-	</ul>
+	<div id="header1">
+		<div style="float:left; width: 115px;">
+			<img style="width: 80px; height: 45px; padding: 18 5% 10% 20px;" src="mms.png">
+		</div>
+		<div>
+			<p style="font-size:24px; text-shadow: 2px 2px 2px black; color: white;" >Medical Management System
+			</p>
+		</div>
+	</div>
 	<div id="body">
 		<div id="bodypart1">
 			<form action="login.php" name="loginForm" method="post" onsubmit="return validateLoginForm()">
@@ -50,3 +54,6 @@
 	</div>
 </body>
 </html>
+<?php
+}
+?>
