@@ -14,11 +14,11 @@
 	</head>
 	
 <body>
-	<div id="header1">
+	<div id="header1" >
 		<div style="float:left; width: 115px;">
 			<img style="width: 80px; height: 45px; padding: 18 5% 10% 20px;" src="mms.png">
 		</div>
-		<div>
+		<div style="float:left; width: 500px;">
 			<p style="font-size:24px; text-shadow: 2px 2px 2px black; color: white;" >Medical Management System
 			</p>
 		</div>

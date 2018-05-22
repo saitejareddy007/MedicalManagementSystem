@@ -10,17 +10,21 @@
 ?>
 <html>
 	<head>
-		<link rel="stylesheet" href="style.css">
 		<link rel="icon" type="image/x-icon" href="logo.png">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<script type="text/javascript" src="script.js"></script>
 		<title>MMS</title>
 	</head>
 <body>
 	<div id="header1">
-		<div style="width: 200px;float: left; margin-left: 20px;">
-			<h2>Welcome <?php echo $fullName; ?></h2>
+		<div style="float:left; width: 115px;">
+			<img style="width: 93%; height: 93%; padding: 18 5% 10% 20px;" src="mms.png">
+		</div>
+		<div>
+			<p style="float:left; margin-top: 20px; font-size:24px; text-shadow: 2px 2px 2px black; color: white;" >Medical Management System
+			</p>
 		</div>
 		<div style="float: right; padding: 30px;margin-right: 20px; font-size: 18px;">
 			<a href="logout.php" style="text-decoration: none;"><b>Logout</b></a>
@@ -32,9 +36,12 @@
         </div> 
 	</div>
 	<div id="body" style="text-align: center;">
+		<div>
+			<h2>Welcome <?php echo $fullName; ?></h2>
+		</div>
 		<div id="hbodypart1">
 			<input type="search" onchange="showTablets(this.value)" name="tabletSearch" placeholder="Search the medicine">
-		<div id="tabletList"></div>	
+			<div id="tabletList"></div>	
 		</div>
 	</div>
 </body>
