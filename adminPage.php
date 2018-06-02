@@ -29,6 +29,7 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+
 	<style type="text/css">
 		#bottom table { 
             width: 100%;
@@ -61,12 +62,12 @@
 		}
 		#main_content{
 			margin: 0 auto;
-			box-shadow: 1px 1px 10px;
 			border-radius: 10px;
 			width: 70%;
-			margin-top: 5%;
+			position: relative;
+			margin-top: 120px;
 			background: none;
-			height: 50%;
+			height: 500px;
 		}
 		#left_main_content{
 			float: left;
@@ -101,7 +102,18 @@
 	</style>
 </head>
 <body>
-	<div id ='header2'>
+	<div id="header1" style="top:0;">
+		<div style="float:left; width: 115px;">
+			<img style="width: 93%; height: 93%; padding: 18 5% 10% 20px;" src="mms.png">
+		</div>
+		<div>
+			<p style="float:left; margin-top: 20px; font-size:24px; text-shadow: 2px 2px 2px black; color: white;" >Medical Management System
+			</p>
+		</div>
+		<div style="float: right; padding: 30px;margin-right: 20px; font-size: 18px;">
+			<a href="logout.php" style="text-decoration: none;"><b>Logout</b></a>
+        </div>
+		 
 	</div>
 	<div id="main_content">
 		<div id="left_main_content">
