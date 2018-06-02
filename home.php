@@ -17,7 +17,7 @@
 		<script type="text/javascript" src="script.js"></script>
 		<title>MMS</title>
 	</head>
-<body>
+<body style="background: none;">
 	<div id="header1">
 		<div style="float:left; width: 115px;">
 			<img style="width: 93%; height: 93%; padding: 18 5% 10% 20px;" src="mms.png">

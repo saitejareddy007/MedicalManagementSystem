@@ -1,11 +1,18 @@
-body{
+html{
 	margin:0 auto;
 	background:#e6ecf0;
+	height: 100%;
 	background-image: url("img.jpg");
 	background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #cccccc;
+}
+body{
+	margin: 0 auto;
+	position: fixed;
+	width: 100%;
+	height: 100%;
 }
 #cart{
 	float: right;
@@ -116,12 +123,15 @@ body{
 }
 
 #obody{
+	margin: 0 auto;
+	left: 0;
+	right: 0;
 	background: white;
 	opacity:0.70;
   	-moz-opacity:.70; 
   	filter:alpha(opacity=50);
 	border-radius: 500px;
-	box-shadow: 10px 10px 1000px;
+	box-shadow: 1px 1px 3px;
 	align-items: center;
 	align-content: center;
 	align-self: center;
@@ -129,10 +139,6 @@ body{
 	height:327px;
 	width:65.25%;
 	border: 1px solid rgba(0,0,0,0.2);
-	position:relative;
-	float:left;
-	left:17.25%;
-	top:100px;
 }
 
 #createAccountBody{
