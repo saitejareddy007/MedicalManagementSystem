@@ -53,6 +53,7 @@
 		$address=$_POST['Address'].','.$_POST['lacality'].','.$_POST['city'].', pincode:'.$_POST['pincode'];
 		$userId=$_SESSION['id'];
 		$items=json_encode($_SESSION['cart']);
+		
 		$result=mysqli_query($con,"INSERT INTO sales(item,userID,adress) VALUES('$items','$userId','$address')");
 
 

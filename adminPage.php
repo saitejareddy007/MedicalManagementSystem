@@ -164,11 +164,16 @@
 			        }
 			        echo "<tr>";
 				    echo "<td>" . $row_s['fullName'] . "</td>";
-				    $item[] = $row['item'];
+				    $item = json_decode($row['item'], true);
 				    echo "<td>";
-				    foreach ($item as $key => $value) {
-				    	# code...
-				    	 echo $value;
+				    
+				    foreach ($item as $i => $value) {
+				    	if (isset(json_decode($row['item'], true)[$i]['price'])) {
+				    		$result = mysqli_query($con,"SELECT * FROM tablets WHERE id='$i' ");
+				    		$result = mysqli_fetch_array($result);
+				    		echo json_decode($row['item'], true)[$i]['quantity']." x ".$result["tbName"]."<br>";
+				    	 } 
+				    	
 				    }
 				    echo "</td>";
 				    echo "<td>" . $row['address'] . "</td>";
