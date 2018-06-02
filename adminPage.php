@@ -1,6 +1,6 @@
 <?php
 	include 'database.php';
-	
+
 	if(isset($_POST['btn'])){
 		$tbName		= $_POST['tbName'];
 		$cost 		= $_POST['cost'];
@@ -104,14 +104,14 @@
 <body>
 	<div id="header1" style="top:0;">
 		<div style="float:left; width: 115px;">
-			<img style="width: 93%; height: 93%; padding: 18 5% 10% 20px;" src="mms.png">
+			<img style="width: 70%; height: 40px; padding: 18px 5% 10% 20px;" src="mms.png">
 		</div>
 		<div>
 			<p style="float:left; margin-top: 20px; font-size:24px; text-shadow: 2px 2px 2px black; color: white;" >Medical Management System
 			</p>
 		</div>
 		<div style="float: right; padding: 30px;margin-right: 20px; font-size: 18px;">
-			<a href="logout.php" style="text-decoration: none;"><b>Logout</b></a>
+			<a href="logout.php" style="text-decoration: none;"><b style="color: #337ab7;">Logout</b></a>
         </div>
 		 
 	</div>
