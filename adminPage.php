@@ -1,6 +1,6 @@
 <?php
 	include 'database.php';
-
+	
 	if(isset($_POST['btn'])){
 		$tbName		= $_POST['tbName'];
 		$cost 		= $_POST['cost'];

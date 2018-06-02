@@ -12,7 +12,7 @@
 	if(isset($_POST['username'])&&isset($_POST['password'])){
 		if($username=='admin'&&$_POST['password']=='admin@cms'){
 			$_SESSION['admin']='admin';
-			header('location: /MedicalManagementSystem/adminPage.php');
+			header('location: /MedicalManagementSystem/');
 		}
 		if($_POST['password']==$row['password']){
 			$_SESSION['id'] = $row['id'];
