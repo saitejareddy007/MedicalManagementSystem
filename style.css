@@ -214,6 +214,7 @@ input{
 	background: none;
 	background-color:none;
 	width:280px;
+	outline: none;
 }
 input:focus{
 	border-color:#1b95e0;
@@ -271,6 +272,9 @@ button:hover{
     position: relative;
     text-align: center;
     white-space: nowrap;
+}
+textarea:focus, input:focus{
+    outline: none;
 }
 #tabletList{
 	overflow-y: scroll;
