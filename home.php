@@ -40,7 +40,7 @@
 			<h2>Welcome <?php echo $fullName; ?></h2>
 		</div>
 		<div id="hbodypart1">
-			<input type="search" onchange="showTablets(this.value)" name="tabletSearch" placeholder="Search the medicine">
+			<input  type="search" onkeyup="showTablets(this.value)" name="tabletSearch" placeholder="Search the medicine">
 			<div id="tabletList"></div>	
 		</div>
 	</div>
