@@ -3,7 +3,7 @@
 
 	session_start();
 
-	$username	= $_POST['username'];
+	$username	= (string)$_POST['username'];
 
 	$result		= mysqli_query($con,"SELECT * FROM user WHERE username = '$username'");
 

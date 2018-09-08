@@ -1,7 +1,7 @@
  <?php 
 	include('database.php');
 
-	$username 		= $_POST['username'];
+	$username 		= (string)$_POST['username'];
 	$password 		= $_POST['password'];
 	$fullName		= $_POST['fullName'];
 	$contactNumber	= $_POST['contactNumber'];
