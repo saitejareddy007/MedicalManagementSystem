@@ -11,6 +11,8 @@ function validateLoginForm(){
 	}
 }
 
+
+
 function validateCreateAccountForm(){
 	var username 		= document.forms['createAccountForm']['username'].value== ""||null;
 	var password 		= document.forms['createAccountForm']['password'].value;
@@ -28,6 +30,19 @@ function validateCreateAccountForm(){
 	}
 	else if (password != rePassword) {
 		alert("You entered two different password");
+		return false;
+	}
+}
+
+function validateAddress(){
+	var username = document.forms['loginForm']['username'].value==""||null;
+	var password = document.forms['loginForm']['password'].value;
+	if (username && (password==""||null)) {
+		alert("Please fill all required fields");
+		return false;
+	}
+	else if (password.length<6) {
+		alert("your password must be minmum 6 characters");
 		return false;
 	}
 }

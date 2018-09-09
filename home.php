@@ -9,7 +9,7 @@
 	$username=$_SESSION['username'];
 	$result = mysqli_query($con,"SELECT * FROM user WHERE username='$username'");
 	$row= mysqli_fetch_array($result);
-	$fullName=$row['username'];
+	$fullName=$row['fullName'];
 ?>
 <html>
 	<head>
