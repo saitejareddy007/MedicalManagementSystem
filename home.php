@@ -3,6 +3,9 @@
 	if(!isset($_SESSION['id'])){
 		header("location: /MedicalManagementSystem");
 	}
+
+	
+	//document.getElementById('cartCount').value = <?php echo $_SESSION['cart'].length();
 	$username=$_SESSION['username'];
 	$result = mysqli_query($con,"SELECT * FROM user WHERE username='$username'");
 	$row= mysqli_fetch_array($result);
@@ -30,8 +33,15 @@
 			<a href="logout.php" style="text-decoration: none;"><b>Logout</b></a>
         </div>
 		<div id="cart" style="margin: 0 auto; margin-right: 40px; padding: 30px; font-family: bold;">
-			<a href="cart.php">
-          		<span style="width: 100%; font-size: 18px; height: 100%;" class="glyphicon glyphicon-shopping-cart"><b>Items</b></span>
+
+			<a href="cart.php" style="display: inline-block;">
+				<span style="display: inline-block; margin: 0;width: 80px;">
+					<span style="font-size: 18px;" class="glyphicon glyphicon-shopping-cart"> </span>
+					<span id = "cartCount" style="color: white; text-align: center;  min-width: 20px;height: 20px; border-radius: 10px;position: relative; background: red; position: absolute; bottom: 40px; right: 180px;padding: 2px;"></span>
+					<span>  Items</span>
+					
+				</span>
+          		
           	</a>
         </div> 
 	</div>
@@ -46,4 +56,28 @@
 	</div>
 </body>
 </html>
+<?php
+if(!isset($_SESSION['cart'])){
+		?>
+		<script type="text/javascript">
+			document.getElementById('cartCount').style.visibility = "hidden";
+		</script>
+		<?php
+}else{
+	?>
 
+		<script type="text/javascript">
+			$sum=0;
+			<?php 
+				foreach ($_SESSION['cart'] as $key => $value):
+					$sum=$value['quantity']+$sum;
+				
+			?>
+				
+			<?php endforeach ?>
+			 document.getElementById('cartCount').innerHTML= <?php echo $sum; ?>;
+		</script>
+	<?php
+}
+
+?>

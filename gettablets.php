@@ -44,7 +44,7 @@ table tr {
 		    echo "<tr>";
 		    echo "<td>" . $row['tbName'] . "</td>";
 		    echo "<td>" . $row['cost'] . "₹</td>";
-		    echo "<td><a href='#' onclick='return addItem($id)'>Add item to cart</button></a>";
+		    echo "<td><a id='addItem' href='#' onclick='return addItem($id)'>Add item to cart</button></a>";
 		    echo "</tr>";
 		}
 		echo "</table>";

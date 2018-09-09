@@ -56,6 +56,10 @@ function showTablets(str) {
 }
 
 function addItem(id) {
+				document.getElementById('cartCount').style.visibility = "visible";
+				var cartCount = document.getElementById('cartCount').innerHTML;
+				cartCount = cartCount==""?0:cartCount;
+				document.getElementById('cartCount').innerHTML = parseInt(cartCount)+1;
 				if (window.XMLHttpRequest) {
             		// code for IE7+, Firefox, Chrome, Opera, Safari
             		xmlhttp = new XMLHttpRequest();
