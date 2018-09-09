@@ -29,7 +29,7 @@
 		<div id="obody" style="margin-top: 120px;">
 			<h1>Delivery Address</h1>
 			<div style="margin: 0 auto; width: 50%;">
-				<form method="post" action="placeorder.php" >
+				<form name="placeOrderForm" method="post" action="placeorder.php" onsubmit="return validateAddress();">
 					<table style="width: 100%">
 						<tr>
 							<td><input style="width:100%;" type="text" name="city" placeholder="city"></td>

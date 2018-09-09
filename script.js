@@ -39,16 +39,16 @@ function validateCreateAccountForm(){
 }
 
 function validateAddress(){
-	var username = document.forms['loginForm']['username'].value==""||null;
-	var password = document.forms['loginForm']['password'].value;
-	if (username && (password==""||null)) {
+
+	var city 		= document.forms['placeOrderForm']['city'].value==""||null;
+	var locality 	= document.forms['placeOrderForm']['locality'].value==""||null;
+	var Address 	= document.forms['placeOrderForm']['Address'].value==""||null;
+	var pincode 	= document.forms['placeOrderForm']['pincode'].value==""||null;
+	if (city || locality || Address || pincode) {
 		alert("Please fill all required fields");
 		return false;
 	}
-	else if (password.length<6) {
-		alert("your password must be minmum 6 characters");
-		return false;
-	}
+	
 }
 
 function showTablets(str) {
