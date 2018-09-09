@@ -32,6 +32,10 @@ function validateCreateAccountForm(){
 		alert("You entered two different password");
 		return false;
 	}
+	else if (contactNumber.length!=10) {
+		alert("please enter a valid phone number");
+		return false;
+	}
 }
 
 function validateAddress(){
