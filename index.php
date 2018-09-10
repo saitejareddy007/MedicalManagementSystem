@@ -2,7 +2,7 @@
 	session_start();
 	if(isset($_SESSION['id'])){
 		include 'home.php';
-	}else if ($_SESSION['admin']) {
+	}else if (isset($_SESSION['admin'])) {
 		include 'adminPage.php';
 	}
 	else{
