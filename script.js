@@ -93,5 +93,6 @@ function addItem(id) {
         		};*/
 		        xmlhttp.open("GET","addItem.php?q="+id,true);
 		        xmlhttp.send();
+		        window.location.href = "./cart.php";
 				return false;
 			}

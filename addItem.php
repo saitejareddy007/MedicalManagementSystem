@@ -1,47 +1,40 @@
 <?php
 	include 'database.php';
 	session_start();
-	if(isset($_POST['submit'])){ 
+	if(isset($_GET['action'])&&$_GET['action']=='delete'){ 
        	$k=0;
-        foreach($_POST['quantity'] as $key => $val) { 
-            if($val==0) { 
-                unset($_SESSION['cart'][$key]); 
-            }else{ 
-            	$maxQ=mysqli_query($con,"SELECT * FROM tablets WHERE id='$key'");
-            	if(mysqli_num_rows($maxQ)!=0){ 
-		            $row_s=mysqli_fetch_array($maxQ); 
-		            $noOfTablets=$row_s["noOfTablets"];
-		        }
-            	if ($val>$noOfTablets) {
-?>
-<script type="text/javascript">
-	var val =<?php echo $noOfTablets; ?>;
-	alert("Sorry for the inconvenience we have only limited stock "+val+" for the medicine you have choosen");
-</script>
-<?php            		
-            		$_SESSION['cart'][$key]['quantity']=$noOfTablets;
-                	$k++;
-            	}
-            	else{
-	                $_SESSION['cart'][$key]['quantity']=$val;
-	                $k++;
-	            }
-            }
-        }
-        if ($k==0) {
+       	echo $_SESSION['cart'][$_GET['quantity']]['price']*$_SESSION['cart'][$_GET['quantity']]['quantity'];
+        unset($_SESSION['cart'][$_GET['quantity']]);
+        if(count($_SESSION['cart'])==0){
         	unset($_SESSION['cart']);
         }
-?>
-<script type="text/javascript">
-	window.location="/MedicalManagementSystem/cart.php"
-</script>
-<?php        
-    
     }
+    else if(isset($_GET['action'])&&$_GET['action']=='quantityChanged'){ 
+    	$key = $_GET['id'];
+    	$val = $_GET['quantity'];
+        $maxQ=mysqli_query($con,"SELECT * FROM tablets WHERE id='$key'");
+    	if(mysqli_num_rows($maxQ)!=0){ 
+            $row_s=mysqli_fetch_array($maxQ); 
+            $noOfTablets=$row_s["noOfTablets"];
+        }
+    	if ($val>$noOfTablets) {
+			?>
+				<script type="text/javascript">
+					var val =<?php echo $noOfTablets; ?>;
+					alert("Sorry for the inconvenience we have only limited stock "+val+" for the medicine you have choosen");
+				</script>
+			<?php            		
+    		$_SESSION['cart'][$key]['quantity']=$noOfTablets;
+    	}
+    	else{
+            $_SESSION['cart'][$key]['quantity']=$val;
+        }
+        echo $_SESSION['cart'][$_GET['id']]['price'];
+    }
+
     if (isset($_GET['q'])) {
 		$id=$_GET['q'];
-		if(isset($_SESSION['cart'][$id])){ 
-	              
+		if(isset($_SESSION['cart'][$id])){    
 	            $_SESSION['cart'][$id]['quantity']++; 
 	    }
 	    else{ 

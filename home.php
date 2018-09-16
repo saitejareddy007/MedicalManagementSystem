@@ -67,17 +67,8 @@ if(!isset($_SESSION['cart'])){
 		<?php
 }else{
 	?>
-
 		<script type="text/javascript">
-			$sum=0;
-			<?php 
-				foreach ($_SESSION['cart'] as $key => $value):
-					$sum=$value['quantity']+$sum;
-				
-			?>
-				
-			<?php endforeach ?>
-			 document.getElementById('cartCount').innerHTML= <?php echo $sum; ?>;
+			 document.getElementById('cartCount').innerHTML= <?php echo count($_SESSION['cart']); ?>;
 		</script>
 	<?php
 }
