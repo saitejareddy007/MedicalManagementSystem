@@ -89,9 +89,27 @@
 		<link rel="icon" type="image/x-icon" href="logo.png">
 		<script type="text/javascript" src="script.js"></script>
 		<title>MMS</title>
+		<script type="text/javascript">
+	function remove(obj) {
+		var pos=60;
+		obj.parentElement.parentElement.style.display="none";
+		var id = setInterval(frame, 1);
+  		function frame() {
+		    if ( pos== 0) {
+		      clearInterval(id);
+		      obj.parentElement.parentElement.parentElement.style.display="none";
+		    } else {
+		      pos--; 
+		      obj.parentElement.parentElement.parentElement.style.height = pos + 'px';
+		    }
+		  }
+		  <?php unset($_SESSION['cart'][$key]); ?>
+		return false;
+	}
+</script>
 	</head>
 	
-<body>
+<body style="font-family: 'Times New Roman', Times, serif;">
 	<div id="header1" style="top: 0px;">
 		<div style="float:left; width: 115px;">
 			<img style="width: 80px; height: 45px; padding: 18 5% 10% 20px;" src="mms.png">
@@ -109,7 +127,7 @@
 		<div id="top">
 			<div id="topl">
 				<h1 style="margin-bottom: 0px;">View cart</h1> 
-				<a href="home.php">Go back to products page</a>
+				<a href="./home.php">Go back to products page</a>
 			</div>
 			<div id="topr">
 				<h2>Cart Summary</h2> 
@@ -118,20 +136,7 @@
 
 		<div id="top_left_content">
 			<?php
-			if(isset($_SESSION['cart'])){
-			?>	
-				<form id="formId" method="post" action="addItem.php"> 
-				      
-				    <table> 
-				          
-				        <tr> 
-				            <th>Name</th> 
-				            <th>Quantity</th> 
-				            <th>Price</th> 
-				            <th>Items Price</th> 
-				        </tr> 
-				          
-				        <?php 
+			if(isset($_SESSION['cart'])){ 
 				          
 				            $sql="SELECT * FROM tablets WHERE id IN ("; 
 				                      
@@ -146,23 +151,35 @@
 				                        $subtotal=$_SESSION['cart'][$row['id']]['quantity']*$row['cost']; 
 				                        $totalprice+=$subtotal; 
 				                    ?> 
-				                        <tr> 
-				                            <td><?php echo $row['tbName'] ?></td> 
-				                            <td><input type="text" name="quantity[<?php echo $row['id'] ?>]" size="5" value="<?php echo $_SESSION['cart'][$row['id']]['quantity'] ?>" /></td> 
-				                            <td><?php echo $row['cost'] ?>₹</td> 
-				                            <td><?php echo $_SESSION['cart'][$row['id']]['quantity']*$row['cost'] ?>₹</td> 
-				                        </tr> 
+
+				                    <div id="cartItem" style="width: 90%; box-shadow: 1px 1px 10px gray; border-bottom: 1px solid gray; border-radius: 2px;height: 60px;background: white; padding: 10px;">
+				                    	<div style="border-radius: 2px;height: 40px;">
+				                    		<div style="float: left;">
+				                    			<p style="font-weight: bold; margin: 0;"><?php echo $row['tbName'] ?></p>
+				                    		</div>
+				                    		<div style="float: right;">
+				                    			<p style="font-weight: bold; margin: 0;">₹<?php echo $row['cost'] ?></p>
+
+				                    		</div>
+				                    	</div>
+				                    	<div style="border-radius: 2px;height: 20px;">
+				                    		<div style="float: left;">
+				                    			<a href="" onclick="return remove(this,<?php echo $row['id'];?>)" style="text-align: center;  text-decoration: none;">
+				                    				<img style="height:14px" src="./delete_icon.svg">
+				                    				<span style="font-family: 'Courier New', Courier, monospace;  color: gray;" >Remove</span>
+				                    			</a>
+				                    		</div>
+				                    		<div style="float: right;display: inline;">
+				                    			<a href="" style="height:24px"><img style="height:100%" src="./minus-cart.svg"></a>
+				                    			<input style=" text-align: center; margin: 0; padding: 0; height: 20px; width: 30px; position: relative; top: -7px;" name="quantity[<?php echo $row['id'] ?>]" value="<?php echo $_SESSION['cart'][$row['id']]['quantity'] ?>">
+				                    			<a href="" style="height:24px"><img style="height:100%" src="./plus-cart.svg"></a>
+				                    		</div>
+				                    		
+				                    	</div>
+				                    </div>
 				                    <?php 
 				                          
-				                    } 
-				        ?> 
-				                    <tr> 
-				                        <td colspan="4">Total Price: <?php echo $totalprice."₹" ?></td> 
-				                    </tr> 
-				          
-				    </table>  
-				</form> 
-			<?php	
+				                    } 	
 			}else{
 				echo "<p>You didnt added any medicine in the cart.</p>";
 			}
@@ -191,6 +208,7 @@
 			        } 
 			    ?> 
 			        <hr /> 
+			        Total Price: <?php echo "₹".$totalprice ?><br>
 			        <button onclick="document.location.href='/MedicalManagementSystem/order.php';" >Check Out</button>
 			    <?php 
 			          
@@ -211,5 +229,6 @@
 		<p>To remove an item, set it's quantity to 0. </p>
 	</div>
 </div>
+
 </body>
 </html>

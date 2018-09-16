@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>Quantity/Minus@mdpi</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Quantity/Minus">
+            <rect id="32-X-32" x="0" y="0" width="32" height="32"></rect>
+            <path d="M16.0000216,4.96 C9.92202162,4.96 4.97102162,9.898 4.96002162,15.978 C4.95502162,18.928 6.09702162,21.703 8.17902162,23.791 C10.2600216,25.88 13.0300216,27.034 15.9790216,27.04 L16.0010216,27.04 C18.9420216,27.04 21.7070216,25.897 23.7910216,23.821 C25.8800216,21.74 27.0340216,18.971 27.0400216,16.021 C27.0510216,9.933 22.1090216,4.971 16.0220216,4.96 L16.0000216,4.96 Z M16.0010216,28 L15.9780216,28 C12.7710216,27.993 9.76002162,26.74 7.49802162,24.469 C5.23702162,22.198 3.99402162,19.182 4.00002162,15.976 C4.01302162,9.368 9.39402162,4 16.0000216,4 L16.0230216,4 C22.6400216,4.013 28.0130216,9.407 28.0000216,16.023 C27.9930216,19.229 26.7400216,22.24 24.4690216,24.502 C22.2040216,26.758 19.1980216,28 16.0010216,28 L16.0010216,28 Z" id="Fill-1" fill="#0BC5D8"></path>
+            <polygon id="Line" fill="#0BC5D8" points="11 17 21 17 21 15 11 15"></polygon>
+        </g>
+        <g id="minus-icon" transform="translate(-33.000000, 4.000000)">
+            <g id="icon" transform="translate(37.000000, 0.000000)"></g>
+        </g>
+        <g id="add-icon" transform="translate(19.000000, 5.000000)"></g>
+    </g>
+</svg>
