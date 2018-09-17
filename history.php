@@ -14,7 +14,7 @@
 	<script type="text/javascript" src="script.js"></script>
 	<title>MMS</title>
 </head>
-<body>
+<body style="background:#F5F5F5">
 	<div id="header1">
 		<div style="float:left; width: 115px;">
 			<img style="width: 93%; height: 93%; padding: 18 5% 10% 20px;" src="mms.png">
@@ -42,17 +42,16 @@
 	<div style="margin: 0 auto; margin-top: 150px; width: 80%; height: 400px; border-radius: 5px; border:1px solid grey;">
 		<?php
 			while($row	= mysqli_fetch_array($result)){
-				$data = json_decode($row[2],true);
-				echo $data["1"];
-				$data = '['.ltrim($row[2],"{");
-				$data = rtrim($data,"}").']';
-				
-				?>
-				<script type="text/javascript">
-					var k=<?php echo $row[2]; ?>;
-					alert(JSON.stringify(k));
-				</script>
-				<?php
+				echo "<div id='orders_list_item' style='width:100%; background:white; border-radius:5px; box-shadow:1px 1px 10px grey; margin-bottom:10px; padding:5px; overflow-y: scroll;'>";
+				$total = 0;
+				foreach (json_decode($row[2]) as $key => $value) {
+					$tbresult = mysqli_query($con,"SELECT tbName from tablets WHERE id=".$key);
+					$tbrow = $tbresult->fetch_assoc();
+					echo $tbrow['tbName']." X ".$value->quantity." = ₹".($value->price*$value->quantity)."<br>";
+					$total += ($value->price*$value->quantity);
+				}
+				echo "Total amount to be piad: ₹".$total;
+				echo "</div>";
 			}
 		?>
 	</div>

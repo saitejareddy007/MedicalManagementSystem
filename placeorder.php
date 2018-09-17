@@ -1,7 +1,7 @@
 <?php
 		include('database.php');
 		session_start();
-		$address=$_POST['Address'].','.$_POST['lacality'].','.$_POST['city'].', pincode:'.$_POST['pincode'];
+		$address=$_POST['Address'].','.$_POST['locality'].','.$_POST['city'].', pincode:'.$_POST['pincode'];
 		$userId=$_SESSION['id'];
 		$items=json_encode($_SESSION['cart']);
 		$result=mysqli_query($con,"INSERT INTO sales(userID,item,address) VALUES('$userId','$items','$address')");
