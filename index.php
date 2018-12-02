@@ -54,6 +54,14 @@
 			<p class="new_user">New to MMS?<a href="/MedicalManagementSystem/createAccount.html" class="Signup"> Sign up now &#xbb;</a></p>
 		</div>
 	</div>
+<div style="background: yellow; position: absolute; bottom: 20px; right: 20px; padding: 20px; border-radius: 5px; text-align: left;">
+		<pre>for patient login create account
+
+for admin login use these credentials:
+	username : admin
+	password : admin@cms
+		</pre>
+	</div>
 </body>
 </html>
 <?php
