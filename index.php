@@ -41,7 +41,7 @@
     		font-family: 'News Cycle', sans-serif;
             height: 650px;
             background: #f9e8e5;
-            background-image: url('med1.jpg');
+            background-image: url('med.jpg');
             overflow-y: hidden;
             overflow-x: hidden;
     	}
@@ -154,6 +154,7 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -175,6 +176,16 @@
     });
 });
     </script>
+=======
+<div style="background: yellow; position: absolute; bottom: 20px; right: 20px; padding: 20px; border-radius: 5px; text-align: left;">
+		<pre>for patient login create account
+
+for admin login use these credentials:
+	username : admin
+	password : admin@cms
+		</pre>
+	</div>
+>>>>>>> 424b9e04ec09fe91acaf79578d832a8394936eff
 </body>
 </html>
 <?php
