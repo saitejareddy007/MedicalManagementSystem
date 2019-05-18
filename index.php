@@ -41,7 +41,7 @@
     		font-family: 'News Cycle', sans-serif;
             height: 650px;
             background: #f9e8e5;
-            background-image: url('med1.jpg');
+            background-image: url('med.jpg');
             overflow-y: hidden;
             overflow-x: hidden;
     	}
@@ -72,7 +72,6 @@
 			/*margin: auto;*/
     	}
         #leftImgContent{
-            /*background-image: url('med1.jpg');*/
             background-repeat: no-repeat; 
             height: 700px;
         }
