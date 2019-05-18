@@ -41,7 +41,7 @@
     		font-family: 'News Cycle', sans-serif;
             height: 650px;
             background: #f9e8e5;
-            background-image: url('med.jpg');
+            background-image: url('med1.jpg');
             overflow-y: hidden;
             overflow-x: hidden;
     	}
@@ -126,7 +126,7 @@
 
                         <div class="input-group" style="margin: 0 0 10px 0;" >
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="email" type="email" class="form-control" name="username" placeholder="Email">
+                            <input id="email" type="text" class="form-control" name="username" placeholder="Email">
                         </div>
                         <div class="input-group" id="show_hide_password">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
@@ -145,8 +145,8 @@
                             </div>
                         </div>
                         <div class="input-group" style="width:100%;">
-                            <button type="submit" class="btn btn-primary" style="font-family: 'Source Code Pro', monospace; background-color: #e8554e; border: 0; float: left;">LOG IN</button>
-                            <button type="button" onclick="window.location = './createAccount.html';" id="createAccountBtn" class="btn btn-primary" >CREATE ACCOUNT</button>
+                            <button type="submit"  class="btn btn-primary" style="font-family: 'Source Code Pro', monospace; background-color: #e8554e; border: 0; float: left;">LOG IN</button>
+                            <button type="button" onclick="window.location='./createAccount.html'" id="createAccountBtn" class="btn btn-primary" >CREATE ACCOUNT</button>
                         </div>
 
                     </form>
@@ -154,7 +154,6 @@
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -176,16 +175,6 @@
     });
 });
     </script>
-=======
-<div style="background: yellow; position: absolute; bottom: 20px; right: 20px; padding: 20px; border-radius: 5px; text-align: left;">
-		<pre>for patient login create account
-
-for admin login use these credentials:
-	username : admin
-	password : admin@cms
-		</pre>
-	</div>
->>>>>>> 424b9e04ec09fe91acaf79578d832a8394936eff
 </body>
 </html>
 <?php
