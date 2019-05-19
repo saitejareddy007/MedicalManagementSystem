@@ -19,7 +19,7 @@ function validateCreateAccountForm(){
 	var rePassword		= document.forms['createAccountForm']['rePassword'].value;
 	var fullName		= document.forms['createAccountForm']['fullName'].value==""||null;
 	var contactNumber	= document.forms['createAccountForm']['contactNumber'].value==""||null;
-
+	alert(password)
 	if (username && (password==""||null) && (rePassword==""||null) && fullName && contactNumber) {
 		alert("Please fill all required fields");
 		return false;
