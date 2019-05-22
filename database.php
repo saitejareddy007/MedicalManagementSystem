@@ -3,4 +3,7 @@
 	if(mysqli_connect_errno()){
 		echo 'Failed to connect MySQL'.mysqli_connect_error();
 	}
+	include 'elasticSearch.php';
+	
+
 ?>
