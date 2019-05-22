@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(isset($_SESSION['id'])){
-        include 'home.php';
+        include 'home1.php';
     }else if (isset($_SESSION['admin'])) {
         include 'adminPage.php';
     }
@@ -179,3 +179,13 @@
 <?php
 }
 ?>
+
+
+
+
+
+
+
+
+
+

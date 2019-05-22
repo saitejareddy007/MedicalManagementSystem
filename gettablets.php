@@ -29,25 +29,27 @@ table tr {
 
 	$string=$_GET['q'];
 
-	$searchResult = mysqli_query($con,"SELECT * FROM tablets WHERE tbName LIKE '%$string%' ");
-
+	if($string = ""){
+		$searchResult = mysqli_query($con,"SELECT * FROM tablets");
+	}else{
+		$searchResult = mysqli_query($con,"SELECT * FROM tablets WHERE tbName LIKE '%$string%' ");
+	}
 	
-	echo "<table>
-        <tr>
-            <th>Name</th>
-            <th>Cost</th>
-            <th>Action</th>
-        </tr>";
-        
-		while($row = mysqli_fetch_array($searchResult)) {
-			$id=$row['id'];
-		    echo "<tr>";
-		    echo "<td>" . $row['tbName'] . "</td>";
-		    echo "<td>" . $row['cost'] . "₹</td>";
-		    echo "<td><a id='addItem' href='#' onclick='return addItem($id)'>Add item to cart</button></a>";
-		    echo "</tr>";
-		}
-		echo "</table>";
+    
+	while($row = mysqli_fetch_array($searchResult)) {
+		$id=$row['id'];
+		echo "<div class='col-lg-3 cardOuterPart'>";
+  		echo "<div class='card' >";
+    	echo "";
+    	echo "<h4 style='color: #4D4D4D;text-transform: capitalize;'>". $row['tbName'] ."</h4>";
+    	echo "<p style='padding: 0;margin: 0;'>Available strips: ". $row['noOfTablets'] ."</p>";
+    	echo "<p style='padding: 0;margin: 0;'>Cost: ". $row['cost'] ."₹/tablet strip</p>";
+    	echo "<div style='width: 100%; position:absolute; right:10px; bottom:10px;'>";
+      	echo "<button class='button two' onclick='return addItem($id)'>Add to cart</button>";
+    	echo "</div>";
+  		echo "</div>";
+			echo "</div>";
+	}
 
 	mysqli_close($con);
 
