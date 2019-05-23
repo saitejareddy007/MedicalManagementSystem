@@ -1,0 +1,12 @@
+{
+    "name": "sai/medical-management-system",
+    "require": {
+        "elasticsearch/elasticsearch": "^6.7"
+    },
+    "authors": [
+        {
+            "name": "saitejareddy007",
+            "email": "tejareddy.d321@gmail.com"
+        }
+    ]
+}
