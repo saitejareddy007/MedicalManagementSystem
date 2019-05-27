@@ -4,6 +4,7 @@
 		echo 'Failed to connect MySQL'.mysqli_connect_error();
 	}
 	include 'elasticSearch.php';
-	
+	// $searchElastic = new SearchElastic();
+    // $searchElastic->InsertData($con);
 
 ?>

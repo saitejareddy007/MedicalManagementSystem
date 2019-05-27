@@ -90,7 +90,7 @@
 		<script type="text/javascript" src="script.js"></script>
 		<title>MMS</title>
 		<script type="text/javascript">
-	function remove(obj,id) {
+	function remove(obj,tabletId) {
 		var pos=60;
 		obj.parentElement.parentElement.style.display="none";
 		var id = setInterval(frame, 1);
@@ -102,8 +102,65 @@
 		      pos--; 
 		      obj.parentElement.parentElement.parentElement.style.height = pos + 'px';
 		    }
-		  }
-		  <?php unset($_SESSION['cart'][?>id<?php]); ?>
+		}
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+        	if (this.readyState == 4 && this.status == 200) {
+            	document.getElementById('tabletId'+tabletId).style.display="none";
+            	var temp = document.getElementById('totalprice').innerHTML;
+            	temp-=this.responseText;
+            	if(temp==0)
+            		location.reload();
+            	else	
+            		document.getElementById('totalprice').innerHTML=temp;
+
+        	}
+		};
+
+        xmlhttp.open("GET","addItem.php?action=delete&quantity="+tabletId,true);
+        xmlhttp.send();
+		
+		return false;
+	}
+	function increaseCount(obj,tabletId){
+		var k = obj.previousSibling.value;
+		obj.previousSibling.value=parseInt(obj.previousSibling.value)+1;
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+        	if (this.readyState == 4 && this.status == 200) {
+        		var str = document.getElementById('tabletId'+tabletId).innerHTML;
+        		str = str.split("").reverse().join("").replace(k.split("").reverse().join(""), obj.previousSibling.value.split("").reverse().join(""));
+        		document.getElementById('tabletId'+tabletId).innerHTML=str.split("").reverse().join("");
+        		var temp = document.getElementById('totalprice').innerHTML;
+            	temp=parseInt(temp)+parseInt(this.responseText);
+            	document.getElementById('totalprice').innerHTML=temp;
+            	// alert(this.responseText);
+        	}
+		};
+        xmlhttp.open("GET","addItem.php?action=quantityChanged&id="+tabletId+"&quantity="+parseInt(obj.previousSibling.value),true);
+        xmlhttp.send();
+		return false;
+	}
+
+	function decreaseCount(obj,tabletId){
+		if(parseInt(obj.nextSibling.value)!=1){
+			var k = obj.nextSibling.value;
+			obj.nextSibling.value-=1;
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+	        	if (this.readyState == 4 && this.status == 200) {
+	            	// alert(this.responseText);
+	            	var str = document.getElementById('tabletId'+tabletId).innerHTML;
+	        		str = str.split("").reverse().join("").replace(k.split("").reverse().join(""), obj.nextSibling.value.split("").reverse().join(""));
+	        		document.getElementById('tabletId'+tabletId).innerHTML=str.split("").reverse().join("");
+	        		var temp = document.getElementById('totalprice').innerHTML;
+		        	temp-=this.responseText;
+		        	document.getElementById('totalprice').innerHTML=temp;
+	        	}
+			};
+        	xmlhttp.open("GET","addItem.php?action=quantityChanged&id="+tabletId+"&quantity="+parseInt(obj.nextSibling.value),true);
+        	xmlhttp.send();
+		}
 		return false;
 	}
 </script>
@@ -138,48 +195,48 @@
 			<?php
 			if(isset($_SESSION['cart'])){ 
 				          
-				            $sql="SELECT * FROM tablets WHERE id IN ("; 
-				                      
-				                    foreach($_SESSION['cart'] as $id => $value) { 
-				                        $sql.=$id.","; 
-				                    } 
-				                      
-				                    $sql=substr($sql, 0, -1).") ORDER BY tbName ASC"; 
-				                    $query=mysqli_query($con,$sql); 
-				                    $totalprice=0; 
-				                    while($row=mysqli_fetch_array($query)){ 
-				                        $subtotal=$_SESSION['cart'][$row['id']]['quantity']*$row['cost']; 
-				                        $totalprice+=$subtotal; 
-				                    ?> 
+        		$sql="SELECT * FROM tablets WHERE id IN (";
+                  
+                foreach($_SESSION['cart'] as $id => $value) { 
+                    $sql.=$id.","; 
+                } 
+                  
+                $sql=substr($sql, 0, -1).") ORDER BY tbName ASC"; 
+                $query=mysqli_query($con,$sql); 
+                $totalprice=0; 
+                while($row=mysqli_fetch_array($query)){ 
+                    $subtotal=$_SESSION['cart'][$row['id']]['quantity']*$row['cost']; 
+                    $totalprice+=$subtotal; 
+                ?> 
 
-				                    <div id="cartItem" style="width: 90%; box-shadow: 1px 1px 10px gray; border-bottom: 1px solid gray; border-radius: 2px;height: 60px;background: white; padding: 10px;">
-				                    	<div style="border-radius: 2px;height: 40px;">
-				                    		<div style="float: left;">
-				                    			<p style="font-weight: bold; margin: 0;"><?php echo $row['tbName'] ?></p>
-				                    		</div>
-				                    		<div style="float: right;">
-				                    			<p style="font-weight: bold; margin: 0;">₹<?php echo $row['cost'] ?></p>
+                <div id="cartItem" style="width: 90%; box-shadow: 1px 1px 10px gray; border-bottom: 1px solid gray; border-radius: 2px;height: 60px;background: white; padding: 10px;">
+                	<div style="border-radius: 2px;height: 40px;">
+                		<div style="float: left;">
+                			<p style="font-weight: bold; margin: 0;"><?php echo $row['tbName'] ?></p>
+                		</div>
+                		<div style="float: right;">
+                			<p style="font-weight: bold; margin: 0;">₹<?php echo $row['cost'] ?></p>
 
-				                    		</div>
-				                    	</div>
-				                    	<div style="border-radius: 2px;height: 20px;">
-				                    		<div style="float: left;">
-				                    			<a href="" onclick="return remove(this,<?php echo $row['id'];?>)" style="text-align: center;  text-decoration: none;">
-				                    				<img style="height:14px" src="./delete_icon.svg">
-				                    				<span style="font-family: 'Courier New', Courier, monospace;  color: gray;" >Remove</span>
-				                    			</a>
-				                    		</div>
-				                    		<div style="float: right;display: inline;">
-				                    			<a href="" style="height:24px"><img style="height:100%" src="./minus-cart.svg"></a>
-				                    			<input style=" text-align: center; margin: 0; padding: 0; height: 20px; width: 30px; position: relative; top: -7px;" name="quantity[<?php echo $row['id'] ?>]" value="<?php echo $_SESSION['cart'][$row['id']]['quantity'] ?>">
-				                    			<a href="" style="height:24px"><img style="height:100%" src="./plus-cart.svg"></a>
-				                    		</div>
-				                    		
-				                    	</div>
-				                    </div>
-				                    <?php 
-				                          
-				                    } 	
+                		</div>
+                	</div>
+                	<div style="border-radius: 2px;height: 20px;">
+                		<div style="float: left;">
+                			<a href="" onclick="return remove(this,<?php echo $row['id'];?>)" style="text-align: center;  text-decoration: none;">
+                				<img style="height:14px" src="./delete_icon.svg">
+                				<span style="font-family: 'Courier New', Courier, monospace;  color: gray;" >Remove</span>
+                			</a>
+                		</div>
+                		<div style="float: right;display: inline;">
+                			<a href="" style="height:24px"><img style="height:100%" src="./minus-cart.svg"></a>
+                			<input style=" text-align: center; margin: 0; padding: 0; height: 20px; width: 30px; position: relative; top: -7px;" name="quantity[<?php echo $row['id'] ?>]" value="<?php echo $_SESSION['cart'][$row['id']]['quantity'] ?>">
+                			<a href="" style="height:24px" onclick="return increaseCount(this,1);"><img style="height:100%" src="./plus-cart.svg"></a>
+                		</div>
+                		
+                	</div>
+                </div>
+                <?php 
+                      
+                } 	
 			}else{
 				echo "<p>You didnt added any medicine in the cart.</p>";
 			}

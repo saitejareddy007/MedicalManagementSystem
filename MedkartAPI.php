@@ -1,9 +1,9 @@
 <?php
 	class MedkartAPI{
 
-		private $con = null;
+		private $conn = null;
 
-		public function __constructor(){
+		public function __construct(){
 			$this->conn = mysqli_connect("localhost","root","sai","MedicalManagementSystem");
 			if(mysqli_connect_errno()){
 				echo 'Failed to connect MySQL'.mysqli_connect_error();
@@ -11,36 +11,60 @@
 		}
 
 		public function authentication($username, $password){
-			$query = "SELECT id, username, fullName, contactNumber, authToken FROM user WHERE username = ".$username." AND password = ".$password;
-			$result = mysqli_query($this->conn,$query);
-			return convertToJSON($result);
+			if ($username =="admin" && $password=="admin@cms"){
+				return ["success","admin"];
+			}
+			$query = "SELECT id, username, fullName, contactNumber, authToken FROM user WHERE username = '$username' AND password = '$password'";
+			$result = mysqli_query($this->conn, $query);
+			$jsonResult = json_encode($this->convertToJSON($result)[0]);
+			return [$jsonResult,"customer"];
 		}
 
-		public function addToCart($userId, $itemId, $quantity){
-			$query = "INSERT INTO cart(userId, itemId, quantity) VALUES(".$userId.", ".$itemId.", ".$quantity.")";
+		public function validateAuthToken($id, $authToken){
+			$query = "SELECT id FROM user WHERE id = '$id' AND authToken = '$authToken'";
+			$result = mysqli_query($this->conn, $query);
+			// return 0;
+			return mysqli_fetch_assoc($result);
+		}
+
+		public function addToCart($userId, $itemId){
+			$query = "INSERT INTO cart(userId, itemId) VALUES('$userId', '$itemId')";
 			mysqli_query($this->conn,$query);
 			return true;
 		}
 
 		public function updateCart($id, $quantity){
-			$query = "UPDATE cart SET quantity = ".$quantity." WHERE id = ".$id;
+			$query = "UPDATE cart SET quantity = '$quantity' WHERE id = '$id'";
+			mysqli_query($this->conn,$query);
+			return true;
+		}
+
+		public function removeFromCart($id){
+			$query = "DELETE FROM cart WHERE id = '$id'";
 			mysqli_query($this->conn,$query);
 			return true;
 		}
 
 		public function getCart($userId){
-			$query = "SELECT * FROM cart";
+			$cartUserId = "cart.userId";
+			$cartId = "cart.id";
+			$query = "SELECT cart.id as cartId, tablets.id, tablets.tbName, tablets.cost, cart.quantity FROM tablets,cart WHERE cart.userId='$userId' and cart.itemId=tablets.id";
 			$result = mysqli_query($this->conn,$query);
-			return convertToJSON($result);
+			return json_encode($this->convertToJSON($result));
 		}
 
 		public static function convertToJSON($result){
-			if (mysqli_num_rows($result)==0)
+			if (mysqli_num_rows($result)==0){
 				return null;
+			}
 			$rows = array();
-			while($r = mysqli_fetch_assoc($result))
-    			$rows[] = $r;
-			return json_encode($rows);
+			$counter = 0;
+			while($r = mysqli_fetch_assoc($result)){
+    			$rows[$counter] = $r;
+    			$counter+=1;
+    		}
+			return $rows;
 		}
+
 	}
 ?>

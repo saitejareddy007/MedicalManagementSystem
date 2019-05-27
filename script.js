@@ -75,11 +75,89 @@ function showTablets(str) {
 			        $(this).addClass("card4")
 			      }
 			    });
+
+                $(".addCartBtn").on("click",function () {
+                	$(this).css("display","none");
+					$(this).closest('div').find('.goCartBtn').css("display","block");
+				});
+
             }
         };
         xmlhttp.open("GET","gettablets.php?q="+str,true);
         xmlhttp.send();
 	
+}
+
+function getCart() {
+	
+		if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("cartView").innerHTML = this.responseText;
+                
+
+            }
+        };
+        xmlhttp.open("GET","getCart.php",true);
+        xmlhttp.send();
+	
+}
+
+$(document).ready(function() {
+	$("#card button").on("click",function () {
+		alert("hai")
+	})
+})
+
+function updateCart(id,quantity,type,cost) {
+	var quantityValue = parseInt(document.getElementById('cartId'+id.toString()).value);
+	if(isNaN(quantityValue)){
+		return false;
+	}
+	if(type==-1){
+		if (quantityValue==1) {
+			return false;
+		}
+		quantityValue-=1;
+	}else if(type==1){
+		quantityValue+=1;
+	}
+	document.getElementById('quantity'+id.toString()).innerHTML = "Quantity: "+quantityValue
+	document.getElementById('cost'+id.toString()).innerHTML = "Cost: "+(quantityValue*cost)
+	document.getElementById('cartId'+id.toString()).value = quantityValue;
+
+	if (window.XMLHttpRequest) {
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp = new XMLHttpRequest();
+	} else {
+    	// code for IE6, IE5
+    	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function() {
+    	if (this.readyState == 4 && this.status == 200) {
+
+    	}
+	};
+	if(quantityValue==0)
+    	xmlhttp.open("GET","getCart.php?q=delete&&id="+id,true);
+    else
+    	xmlhttp.open("GET","getCart.php?q=update&&id="+id+"&&quantity="+quantityValue,true);
+    xmlhttp.send();
+
+	return false;
+}
+
+function cartIconClicked(){
+	document.getElementById('tabletsContent').style.display="none";
+	// document.getElementById('tabletsView').style.margin=0;
+	document.getElementById('cartView').style.visibility="visible";
+	return false;
 }
 
 function addItem(id) {
@@ -94,13 +172,15 @@ function addItem(id) {
     	// code for IE6, IE5
     	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
-	/*xmlhttp.onreadystatechange = function() {
+	xmlhttp.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200) {
-        	document.getElementById("tabletList").innerHTML = this.responseText;
+
     	}
-	};*/
+	};
     xmlhttp.open("GET","addItem.php?q="+id,true);
     xmlhttp.send();
-    window.location.href = "./cart.php";
+    // window.location.href = "./cart.php";
+    // alert(this.innerHTML)
+
 	return false;
 }
