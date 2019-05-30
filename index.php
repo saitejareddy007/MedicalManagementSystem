@@ -1,6 +1,9 @@
 <?php
     require('MedkartAPI.php');
     session_start();
+    $header = apache_request_headers(); 
+        
+
     $medkartAPI = new MedkartAPI();
     if(isset($_SESSION['id']) && isset($_SESSION['authToken']) && $medkartAPI->validateAuthToken($_SESSION['id'], $_SESSION['authToken'])){
         $cart = json_decode($medkartAPI->getCart($_SESSION['id']),true);
@@ -21,6 +24,13 @@
         include 'adminPage.php';
     }
     else{
+        ?>
+        <script type="text/javascript">
+            if(window.location.pathname!="/MedicalManagementSystem/"){
+                window.location.href = "http://localhost/MedicalManagementSystem"
+            }
+        </script>
+        <?php
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,6 +61,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
     <!-- font-family: 'Source Code Pro', monospace; -->
     <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="../script.js"></script>
     <style type="text/css">
     	body{
     		font-family: 'News Cycle', sans-serif;
@@ -136,7 +147,7 @@
                     <p style="font-family: 'News Cycle'; font-size: 16px; margin-bottom: 50px; width: 100%;">The best way to buy medicines</p>
                     <h4 style="font-family: 'News Cycle';">Log In</h4>
 
-                    <form class="col-sm-8" style="padding: 0;" action="login.php" name="loginForm" method="post" onsubmit="return validateLoginForm()">
+                    <form class="col-sm-8" style="padding: 0;" action="./login.php" name="loginForm" method="post" onsubmit="return validateLoginForm()">
 
                         <div class="input-group" style="margin: 0 0 10px 0;" >
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -204,5 +215,6 @@ session_destroy();
         session_destroy();
     }
     
+
 ?>
 

@@ -45,11 +45,16 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <!-- font-family: 'Roboto', sans-serif; -->
     <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="../script.js"></script>
     <style type="text/css">
 	   body{
 	    font-family: 'News Cycle', sans-serif;
-         background: #f9e8e5;
+      background: #f9e8e5;
+      padding-top: 65px;
 	   }
+     .removeItem{
+      cursor: pointer;
+     }
       
       .curve {
         background-color: #8aa7ca;
@@ -132,7 +137,9 @@
              -o-transition: background-position 0s ease;
                 transition: background-position 0s ease;
 }
-
+  #searchForm{
+    width: 40%;
+  }
 		.button.two:hover {
 		  background-position: 0 0, 0 0;
 		  
@@ -140,12 +147,56 @@
 		     -moz-transition-duration: 0.5s;
 		          transition-duration: 0.5s;
 		}
-	
+	   #cart{
+        margin: 0; 
+        padding: 10px 7px 0 0;
+        text-transform: capitalize; 
+        margin-bottom:25px;
+      }
+      #cartSummary{
+        margin: 0; 
+        padding:10px 0 0 7px; 
+        position:relative;
+      }
+      #mobileView{
+      display: none;
+    }
+    #laptopView{
+      display: inherit;
+    }
+
+    #cartFooter{
+      height:80px;
+    }
+    
 		@media (max-width: 991.98px) { 
+      body{
+      padding-top: 100px;
+    }
 			.card1,.card2,.card3,.card4{
 				padding: 10px 0 0 0;
 			}
-		 }
+      #cart{
+        padding-left: 0;
+        padding-right: 0;
+      }
+      #cartSummary{
+        padding-left: 0;
+        padding-right: 0;
+      }
+      #cartFooter{
+        height: 138px;
+      }
+      #searchForm{
+        width: 100%;
+      }
+      #mobileView{
+        display: inline-block;
+      }
+      #laptopView{
+      display: none;
+      }
+    }
 		.listItem{
 			width: 100%;
 			height: 50px;
@@ -160,10 +211,15 @@
 		.listItem:hover{
 			background: #f9e8e5;
 		}
-		#usernameTabArrow,#usernameTab{
+		.usernameTabArrow,.usernameTab{
 			display: none;
 		}
-    #cart div,#cartSummary div{
+    .child{
+      display: table-cell;
+  vertical-align: middle;
+    }
+
+    #cartHeader, #cartSummary div{
       box-shadow: 0 2px 4px 0 rgba(0,0,0,.08); 
       margin: 0; 
       height: 100px; 
@@ -198,13 +254,29 @@
     </style>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light" style="background: #e8554e; box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand mr-3 ml-auto" href="./" style="color: white; font-family: 'Satisfy', cursive; font-size: 32px; padding: 0; margin: 0;">Medkart</a>
-    <form class="form-inline mr-auto my-lg-0" style="width:40%; border-radius: 5px;">
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background: #e8554e; box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);">
+  
+  <div class="navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand mr-3 ml-auto" href="http://localhost/MedicalManagementSystem/" style="color: white; font-family: 'Satisfy', cursive; font-size: 32px; padding: 0; margin: 0;">Medkart</a>
+    <ul id="mobileView" class="navbar-nav" style=" float: right;">
+      <li class="mr-2 nameTab" style="width:50px;display:inline;margin:0;">
+        <a class="nav-link waves-effect waves-light nameTab" href="#" style="color: white; font-family: 'Roboto', sans-serif; text-transform: capitalize;">sai <i class="fas fa-angle-down"></i></a>
+        <div class="usernameTabArrow" style="width: 25px; height: 25px; position: absolute; background: white; transform: rotate(45deg); z-index: 20; margin-left: 10px; display: none;"></div>
+        <div class="usernameTab" style="width: 200px; position: absolute; background: white; margin: 13px auto 0px -75px; z-index: 20; border-radius: 3px; box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px 0px; display: none;">
+          <div id="profile" class="listItem">
+            <span style="font-family: 'Roboto', sans-serif;"><i class="fas fa-user-alt" style="margin-right: 10px; color: #e8554e;"></i> Profile</span>
+          </div>
+          <hr style="padding: 0; margin: 0;color: #e8554e;">
+          <div class="listItem logout">
+            <span style="font-family: 'Roboto', sans-serif;"><i class="fas fa-sign-out-alt" style="margin-right: 10px; color: #e8554e;"></i> Logout</span>
+          </div>
+        </div>
+      </li>
+      <li class="cartIcon" style="width:50px; display:inline;">
+        <a class="nav-link waves-effect waves-light" href="" onclick="return cartIconClicked();" style="color: white;font-family: 'Roboto', sans-serif;width:40px;"><i class="fas fa-cart-plus"></i><span class="cartCount" style="width: 18px; height: 18px; position: absolute; background: white; border-radius: 10px; color: #e8554e; font-size: 12px; font-family: 'Roboto', sans-serif; font-weight: bold; margin-top: -5px;margin-left: 2px; text-align: center;">7</span></a>
+      </li>
+    </ul>
+    <form class="form-inline mr-auto my-lg-0" id="searchForm" style=" border-radius: 5px;">
       <div class="input-group" style="width: 100%;background: white; border-radius: 2px; z-index: 10;">
         <input class="form-control form-control-lg mr-sm-2 searchField" id="searchField" type="search" onkeyup="showTablets(this.value)" style="border: 0; outline: none; font-family: Roboto,Arial,sans-serif; font-size: 14px;" placeholder="Search for medicines brands and more" aria-label="Search">
         <span class="input-group-addon" style="background: white; border-radius: 5px; padding:5px 10px 0 0;">
@@ -213,27 +285,27 @@
       </div>
         <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
     </form>
-    <ul class="navbar-nav ml mr-auto mt-2 mt-lg-0">
-      <li class="nav-item" style="text-align: center;">
-        <a class="nav-link" id="nameTab" href="#" style="color: white; font-family: 'Roboto', sans-serif; text-transform: capitalize;"><?php echo $fullName." "; ?><i class="fas fa-angle-down"></i></a>
-        <div id="usernameTabArrow" style="width: 25px; height: 25px; position: absolute; background: white; transform: rotate(45deg);z-index: 9;margin-left:10px;"></div>
-        <div id="usernameTab" style="width: 200px; position: absolute; background: white; margin: 0 auto; margin-left: -75px;margin-top:13px; z-index: 10; border-radius: 3px; box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);">
+    <ul id="laptopView" class="navbar-nav ml mr-auto mt-2 mt-lg-0">
+      <li class="nav-item nameTab" style="text-align: center;">
+        <a class="nav-link nameTab" href="#" style="color: white; font-family: 'Roboto', sans-serif; text-transform: capitalize;"><?php echo $fullName." "; ?><i class="fas fa-angle-down"></i></a>
+        <div class="usernameTabArrow" style="width: 25px; height: 25px; position: absolute; background: white; transform: rotate(45deg);z-index: 9;margin-left:10px;"></div>
+        <div class="usernameTab" style="width: 200px; position: absolute; background: white; margin: 0 auto; margin-left: -75px;margin-top:13px; z-index: 10; border-radius: 3px; box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);">
         	<div id="profile" class="listItem">
         		<span style="font-family: 'Roboto', sans-serif;"><i class="fas fa-user-alt" style="margin-right: 10px; color: #e8554e;"></i> Profile</span>
         	</div>
         	<hr style="padding: 0; margin: 0;color: #e8554e;">
-        	<div id="logout" class="listItem">
+        	<div class="listItem logout">
         		<span style="font-family: 'Roboto', sans-serif;"><i class="fas fa-sign-out-alt" style="margin-right: 10px; color: #e8554e;"></i> Logout</span>
         	</div>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href onclick="return cartIconClicked();" style="color: white;font-family: 'Roboto', sans-serif;width:100px;"><i class="fas fa-cart-plus"></i> Cart<span id="cartCount" style="width: 18px; height: 18px; position: absolute; background: white; border-radius: 10px; color: #e8554e; font-size: 12px; font-family: 'Roboto', sans-serif; font-weight: bold; margin-top: -5px;margin-left: 2px; text-align: center;"></span></a>
+      <li class="nav-item cartIcon">
+        <a class="nav-link" href onclick="return cartIconClicked();" style="color: white;font-family: 'Roboto', sans-serif;width:100px;"><i class="fas fa-cart-plus"></i> Cart<span class="cartCount" style="width: 18px; height: 18px; position: absolute; background: white; border-radius: 10px; color: #e8554e; font-size: 12px; font-family: 'Roboto', sans-serif; font-weight: bold; margin-top: -5px;margin-left: 2px; text-align: center;"></span></a>
       </li>
     </ul>
   </div>
 </nav>
-<div id="tabletsContent" class="container-fluid" style="background: #f9e8e5; height: 200px; padding: 5px 30px 0 30px; font-family: 'Karla', sans-serif;">
+<div id="tabletsContent" class="container-fluid" style="background: #f9e8e5; height: 200px; padding: 5px 30px 0 30px; font-family: 'Karla', sans-serif; ">
   <div class="row" id="tabletsView">
     <div class="col-sm-3 cardOuterPart" >
       <div class="card">
@@ -275,6 +347,20 @@
 </div>
 <script type="text/javascript">
   $(document).ready(function() {
+    window.onpopstate = function (event) {
+      if(event.state==null){
+        showTablets("")
+      }else{
+        cartIconClicked(2)
+      }
+    }
+    
+
+    $(window).on('hashchange', function(){
+        var hash = window.location.hash;
+        console.log(hash);
+    });
+
     $(".cardOuterPart").each(function (index, value) {
       if(index%4 == 0){
         $(this).addClass("card1")
@@ -287,42 +373,47 @@
         $(this).addClass("card4")
       }
     });
-    getCart();
-    showTablets("");
+    // getCart();
+    
 
-    $("#usernameTabArrow").hide()
-    $("#usernameTab").hide()
+    $(".usernameTabArrow").hide()
+    $(".usernameTab").hide()
 
-    $("#nameTab, #usernameTabArrow,#usernameTab").hover(function () {
-    	$("#nameTab i").removeClass()
-    	$("#nameTab i").addClass("fas fa-angle-up")
-    	$("#usernameTabArrow").show()
-    	$("#usernameTab").show()
-    	
+    $(".nameTab, .usernameTabArrow,.usernameTab").hover(function () {
+    	$(".nameTab a i").removeClass()
+    	$(".nameTab a i").addClass("fas fa-angle-up")
+    	$(".usernameTabArrow").show()
+    	$(".usernameTab").show()
+    	return false;
     }, function(){
-    	$("#nameTab i").removeClass()
-      $("#nameTab i").addClass("fas fa-angle-down")
-      $("#usernameTabArrow").hide()
-    	$("#usernameTab").hide()
+    	$(".nameTab a i").removeClass()
+      $(".nameTab a i").addClass("fas fa-angle-down")
+      $(".usernameTabArrow").hide()
+    	$(".usernameTab").hide()
+      return false;
     })
 
-    $("#nameTab").on("click",function () {
-      var currentClass = $("#nameTab i").attr("class")
+    $(".nameTab").on("click",function () {
+      var currentClass = $(".nameTab a i").attr("class")
       if(currentClass == "fas fa-angle-down"){
-        $("#nameTab i").removeClass()
-        $("#nameTab i").addClass("fas fa-angle-up")
-        $("#usernameTabArrow").show()
-        $("#usernameTab").show()
+        $(".nameTab a i").removeClass()
+        $(".nameTab a i").addClass("fas fa-angle-up")
+        $(".usernameTabArrow").show()
+        $(".usernameTab").show()
       }else if(currentClass == "fas fa-angle-up"){
-        $("#nameTab i").removeClass()
-        $("#nameTab i").addClass("fas fa-angle-down")
-        $("#usernameTabArrow").hide()
-        $("#usernameTab").hide()
+        $(".nameTab a i").removeClass()
+        $(".nameTab a i").addClass("fas fa-angle-down")
+        $(".usernameTabArrow").hide()
+        $(".usernameTab").hide()
       }
+      return false;
     })
 
-    $("#logout").on("click",function () {
-    	window.location = "./logout.php"
+    $(".logout").on("click",function () {
+    	window.location.href = "./logout.php"
+    })
+    $('#cartIcon').on('click',function () {
+      $(this).hide()
     })
   })
   
@@ -338,16 +429,36 @@
 </body>
 </html>
 <?php
+if(isset($header['Page'])){
+
+  ?>
+  <script type="text/javascript">
+    cartIconClicked(2)
+  </script>
+<?php
+}
+else{
+  ?>
+  <script type="text/javascript">
+    showTablets("")
+  </script>
+  
+  <?php
+}
 if(!isset($_SESSION['cart'])){
 		?>
 		<script type="text/javascript">
-			document.getElementById('cartCount').style.visibility = "hidden";
+			$('.cartCount').each(function (index) {
+         $(this).hide()
+       });
 		</script>
 		<?php
 }else{
 	?>
 		<script type="text/javascript">
-			 document.getElementById('cartCount').innerHTML= <?php echo count($_SESSION['cart']); ?>;
+       $('.cartCount').each(function (index) {
+         $(this).text(<?php echo count($_SESSION['cart']); ?>)
+       });
 		</script>
 	<?php
 }

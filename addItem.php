@@ -41,7 +41,6 @@
 
     if (isset($_GET['q'])) {
 		$id=$_GET['q'];
-		
 		if(isset($_SESSION['cart'][$id])){    
 	            $_SESSION['cart'][$id]['quantity']++; 
 	    }

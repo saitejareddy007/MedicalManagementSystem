@@ -42,7 +42,8 @@ table tr {
     foreach ($result["result"] as $key => $row) {
         $id=$row['_id'];
         echo "<div class='col-lg-3 cardOuterPart'>";
-        echo "<div class='card' >";
+        echo "<div style='background-color:#D8C3A5;'>";
+        echo "<div class='card' style='border-bottom-right-radius:500px;'>";
         echo "<h4 style='color: #4D4D4D;text-transform: capitalize;'>". $row["_source"]['tbName'] ."</h4>";
         echo "<p style='padding: 0;margin: 0;'>Available strips: ". $row["_source"]['noOfTablets'] ."</p>";
         echo "<p style='padding: 0;margin: 0;'>Cost: ". $row["_source"]['cost'] ."₹/tablet strip</p>";
@@ -53,9 +54,10 @@ table tr {
             echo "<button class='button two addCartBtn' style='display:none;' onclick='addItem($id)'>Add to cart</button>";
             
         }else{
-            echo "<button class='button two goCartBtn' style='display:none;' onclick='$cartUrl'>Go to cart</button>";
+            echo "<button class='button two goCartBtn' style='display:none; ' onclick='$cartUrl'>Go to cart</button>";
             echo "<button class='button two addCartBtn' onclick='addItem($id)'>Add to cart</button>";
         }
+        echo "</div>";
         echo "</div>";
         echo "</div>";
         echo "</div>";
