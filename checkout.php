@@ -53,11 +53,19 @@
       padding-top: 80px;
 	   }
 
+
      .tabHeader{
       background: #e8554e; 
       height: 50px; 
       border-radius: 2px 2px 0 0;
       padding: 15px 0px 10px 20px;
+     }
+     .tabHeaderClose{
+      display: table;
+      background: white;
+      width: 100%;
+      border-radius: 2px 2px 0 0;
+      padding: 15px 20px 10px 20px;
      }
      .tabBody{
       border-radius: 0 0 2px 2px;
@@ -84,7 +92,12 @@
         padding: 10px;
         min-width: 200px;
       }
-
+      #cartContentCount{
+        display: none;
+      }
+      .tabBody{
+        display: none;
+      }
       .card1{
         padding: 10px 10px 0 0px;
       }
@@ -100,6 +113,21 @@
       #cartView{
         /*display: none;*/
         visibility: hidden;
+      }
+      #orderSummaryTabBody{
+        height: 530px;
+      }
+      .tabHeader{
+        display: none;
+      }
+      .inActive{
+        display: none;
+      }
+      .tabHeaderClose{
+        height: 50px;
+      }
+      .tick{
+        display: none;
       }
       .button.two {
         border-radius: 25px;
@@ -154,6 +182,9 @@
   #searchForm{
     width: 40%;
   }
+  .btnChange{
+    display: none;
+  }
 		.button.two:hover {
 		  background-position: 0 0, 0 0;
 		  
@@ -182,11 +213,18 @@
     #cartFooter{
       height:80px;
     }
+
+    #addressTabBody{
+      height: 400px;
+    }
     
 		@media (max-width: 991.98px) { 
       body{
-      padding-top: 100px;
-    }
+        padding-top: 100px;
+      }
+      #addressTabBody{
+      height: 650px;
+      }
 			.card1,.card2,.card3,.card4{
 				padding: 10px 0 0 0;
 			}
@@ -197,9 +235,6 @@
       #cartSummary{
         padding-left: 0;
         padding-right: 0;
-      }
-      #cartFooter{
-        height: 138px;
       }
       #searchForm{
         width: 100%;
@@ -215,7 +250,7 @@
       display: none;
     }
     .active{
-      display: block;
+      display: inherit;
     }
 		.listItem{
 			width: 100%;
@@ -287,30 +322,62 @@
 <div id="checkoutView" class="container-fluid" style="background: #f9e8e5; height: 200px; padding: 5px 30px 0 30px; font-family: 'Karla', sans-serif; ">
   <div class="row">
     <div class="col-sm-8" >
-      <div id="loginTab" style="margin-bottom: 20px; border-radius: 2px;" >
-        <div class="tabHeader" id="loginTabHeader" >
-          <span style="width: 20px; height: 20px; border-radius: 2px; background: white;position: absolute; padding: 0 0 0 6px; color: #e8554e;font-family: Roboto,Arial,sans-serif;"><p style="line-height: 22px;">1</p></span><span ><p style="margin-left: 40px;font-family: Roboto,Arial,sans-serif; color: white; line-height: 20px;">LOGIN</p></span>
+      <div id="loginTab" style="margin-bottom: 20px; border-radius: 2px;">
+        <div class="tabHeader" id="loginTabHeader">
+          <span style="width: 20px; height: 20px; border-radius: 2px; background: white;position: absolute; padding: 0 0 0 6px; color: #e8554e;font-family: Roboto,Arial,sans-serif;"><p style="line-height: 22px;">1</p></span><span><p style="margin-left: 40px;font-family: Roboto,Arial,sans-serif; color: white; line-height: 20px;">LOGIN</p>
+          </span>
         </div>
+        <div class="tabHeaderClose" id="loginTabHeader" style="height: 80px;">
+          <div style="float:left; display: inline;">
+            <span style="width: 20px; height: 20px; border-radius: 2px; background: #e0e0e0; position: absolute; padding: 0 0 0 6px; color: #e8554e;font-family: Roboto,Arial,sans-serif;">
+              <p style="line-height: 22px;">1</p>
+            </span>
+            <span>
+              <p style="margin-left: 40px;font-family: Roboto,Arial,sans-serif; color: #777; line-height: 20px; margin-bottom: 8px;">LOGIN<svg style="line-height: 20px; margin-bottom: 3px;" height="16" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" stroke="#e8554e"></path></svg>
+              </p>
+            </span>
+            <div style="padding-left: 20px;">
+              <p style="padding-left: 20px; font-size:14px;">
+                <b>
+                  <?php echo $_SESSION['fullName'];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +91 <?php echo $_SESSION['contactNumber'];?>
+                </b>
+              </p>
+            </div>
+          </div>
+            <button  class="btn btnChange active waves-effect waves-light" id="loginChangeBtn" style="float: right; box-shadow: 0 0 0 0; margin-top: 0; color:  #e8554e; border: 0.5px solid #e0e0e0;">CHANGE</button>
+          </div>
         <div class="tabBody" id="loginTabBody" style="height: 200px;background: white;text-align: left;">
-          <p style="color: #4D4D4D; margin-bottom: 5px;">Name <b style="color: black;margin-left: 20px;"><?php echo $_SESSION['fullName']?></b></p>
-          <p style="color: #4D4D4D; margin-bottom: 5px;">Phone <b style="color: black;margin-left: 20px;"><?php echo $_SESSION['contactNumber']?></b></p>
-          <p><a href="./logout.php" style="color: #e8554e;font-family: Roboto,Arial,sans-serif; font-size: 14px;"><b>Logout & Sign to another account</b></a></p>
-          <button class="btn" style="background: #D8C3A5; color: white; margin: 0; padding: 10px 40px 10px 40px;"><b>CONTINUE CHECKOUT</b></button>
+          <p style="color: #4D4D4D; margin-bottom: 5px;">Name <b style="color: black;margin-left: 20px;"><?php echo $_SESSION['fullName'];?></b></p>
+          <p style="color: #4D4D4D; margin-bottom: 5px;">Phone <b style="color: black;margin-left: 20px;"><?php echo $_SESSION['contactNumber'];?></b></p>
+          <p><a href="./logout.php" style="color: #e8554e;font-family: Roboto,Arial,sans-serif; font-size: 14px;"><b>Logout &amp; Sign to another account</b></a></p>
+          <button class="btn continue waves-effect waves-light" id="addressTab" style="background: #D8C3A5; color: white; margin: 0; padding: 10px 40px 10px 40px;"><b>CONTINUE CHECKOUT</b></button>
           <!-- <button class="btn" style="background: #8E8D8A; color: white; margin: 0; padding: 10px 40px 10px 40px;"><b>CONTINUE CHECKOUT</b></button> -->
         </div>
       </div>
 
       <div id="addressTab" style="margin-bottom: 20px; border-radius: 2px;" >
-        <div class="tabHeader" id="addressTabHeader" >
+        <div class="tabHeader active" id="addressTabHeader" >
           <span style="width: 20px; height: 20px; border-radius: 2px; background: white;position: absolute; padding: 0 0 0 6px; color: #e8554e;font-family: Roboto,Arial,sans-serif;"><p style="line-height: 22px;">2</p></span><span ><p style="margin-left: 40px;font-family: Roboto,Arial,sans-serif; color: white; line-height: 20px;">DELIVERY ADDRESS</p></span>
         </div>
-        <div class="tabBody" id="addressTabBody" style="height: 600px; width: 100%; display: inline-block; background: white; padding: 20px 30px 30px 20px; ">
+        <div class="tabHeaderClose inActive" >
+          <div style="float:left; display: inline-block;">
+          <span style="width: 20px; height: 20px; border-radius: 2px; background: #e0e0e0;position: absolute; padding: 0 0 0 6px; color: #e8554e;font-family: Roboto,Arial,sans-serif;"><p style="line-height: 22px;">2</p></span><span ><p style="margin-left: 40px;font-family: Roboto,Arial,sans-serif; color: #777; justify-content: stretch; margin-bottom: 0;line-height: 22px;" >DELIVERY ADDRESS<svg class="tick" style="line-height: 20px; margin-bottom: 3px;" height="16" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" ><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" stroke="#e8554e"></path></svg></p></span>
+          
+        </div>
+        <button id="addressChangeBtn" class="btn btnChange" style="float: right; box-shadow: 0 0 0 0; margin-top: 0; color:  #e8554e; border: 0.5px solid #e0e0e0;" >CHANGE</button>
+        <div style="padding-left: 20px;display: inline-block;">
+              <p id="address" style="padding-left: 20px; font-size:14px;" align="justify-content">
+                <b>
+                  Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book.
+                </b>
+              </p>
+          </div>
+      </div>
+        <div class="tabBody active" id="addressTabBody" style=" width: 100%; background: white; padding: 20px 30px 30px 20px; ">
           <div class="radio" style="width: 16px; height: 16px; border-radius: 40px; border: 2px solid #e8554e; text-align: center; padding: 2px 0 0 0px;display: inline-block;">
             <div class="radioInside active" style="width: 8px; height: 8px; background:  #e8554e; margin: 0 auto; top:0;bottom: 0; border-radius: 8px;">
               <input type="radio" name="" style="visibility: hidden;">
-
             </div>
-           
           </div>
            <label style="margin-left: 20px;position: absolute; line-height: 15px; color:#e8554e; font-size: 14px;font-family: Roboto,Arial,sans-serif;"><b>ADD A NEW ADDRESS</b></label>
            <div id="newAddressForm" style="padding-left: 35px;">
@@ -353,15 +420,7 @@
                   <input type="text" class="form-control" id="inputZip">
                 </div>
               </div>
-              <div class="form-group">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="gridCheck">
-                  <label class="form-check-label" for="gridCheck">
-                    Check me out
-                  </label>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Sign in</button>
+              <button id="saveAndDeliveryBtn" type="submit" class="btn " style="background: #D8C3A5; margin-left: 0; color: white; padding: 10px 40px 10px 40px;"><b>SAVE AND DELIVER HERE</b></button>
             </form>
              
            </div>
@@ -371,22 +430,112 @@
         <div class="tabHeader" id="orderSummaryTabHeader" >
           <span style="width: 20px; height: 20px; border-radius: 2px; background: white;position: absolute; padding: 0 0 0 6px; color: #e8554e;font-family: Roboto,Arial,sans-serif;"><p style="line-height: 22px;">3</p></span><span ><p style="margin-left: 40px;font-family: Roboto,Arial,sans-serif; color: white; line-height: 20px;">ORDER SUMMARY</p></span>
         </div>
-        <div class="tabBody" id="orderSummaryTabBody" style="height: 100px;background: white;">
+        <div class="tabHeaderClose" id="orderSummaryTabHeaderClose" >
+          <div style="float:left; display: inline; height: 20px;">
+            <span style=" width: 20px; height: 20px; border-radius: 2px; background: #e0e0e0; position: absolute; padding: 0 0 0 6px; color: #e8554e;font-family: Roboto,Arial,sans-serif;"><p style="line-height: 22px;">3</p></span><span ><p style="margin-left: 40px;font-family: Roboto,Arial,sans-serif; color: #777; line-height: 20px; margin-bottom: 5px;">ORDER SUMMARY<svg class="tick" style="line-height: 20px; margin-bottom: 3px;" height="16" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" ><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" stroke="#e8554e"></path></svg></p></span>
+            <div style="padding-left: 20px;display: inline-block;float: left; height: 20px;">
+              <p id="cartContentCount" style="padding-left: 20px; font-size:14px; margin-top: 0;" align="justify-content">
+                <b>
+                  6 items
+                </b>
+              </p>
+          </div>
+          </div>
           
+          <button class="btn btnChange" style="float: right; box-shadow: 0 0 0 0; margin-top: 0; color:  #e8554e; border: 0.5px solid #e0e0e0;" >CHANGE</button>
+          
+        </div>
+        <div class="tabBody" id="orderSummaryTabBody" style="background: white;">
+          <?php
+            $cart = $_SESSION["cart"];
+            $totalCost = 0;
+            echo "<div style='max-height:450px; width:100%; overflow-y:scroll; background:white; padding:0; border-right: 1px solid rgba(0,0,0,.2); border-left: 1px solid rgba(0,0,0,.2); border-radius:0px;' >";
+            $cartCount = count($_SESSION["cart"]);
+            $tempCartCount = $cartCount;
+            foreach ($cart as $key => $value) {
+              if($tempCartCount==1){
+                echo '<div class="tabInCart" style="width:100%; height:150px; padding:20px; ">';
+              }else{
+                echo '<div class="tabInCart" style="width:100%; height:150px; padding:20px; border-bottom: 0.5px solid rgba(0,0,0,.2); ">';
+              }
+              $tempCartCount-=1;
+              $totalCost+=$value['quantity']*$value['cost'];
+                
+              echo '<h4>'.$value['tbName'].'</h4>';
+              $cartId = $value['cartId'];
+              echo '<p id="quantity'.$cartId.'" style="margin:0;">Quantity: '.$value['quantity'].'</p>';
+              echo '<p id="cost'.$cartId.'" class="cost" style="margin:0;" value="678">Cost: '.$value['quantity']*$value['cost'].'₹</p>';
+
+              echo "<div style='height:24px; display:inline-block; box-shadow:0 0 0 0; margin:10px 0 0 0;'>";
+              echo '<div style="float: left;display: inline; height:24px; box-shadow:0 0 0 0; margin:0 0 0 0; width:150px; ">';
+              echo '<a href style="height:24px;" onclick="return updateCart('.$cartId.',-1,-1,'.$value['cost'].');"><i style="color:#e8554e; font-size: 24px;" class="fas fa-minus-circle"></i></a>';
+              echo '<input style="text-align: center; margin: 0 10px 0 10px; padding: 0; height: 24px; width: 36px; position: relative; border-radius:2px; border:.5px solid #4D4D4D; top:-4px;" onchange="changeValue(this)" onkeydown = "getValue(this)" onkeyup="updateCart('.$cartId.',this.value,0,'.$value['cost'].');" id="cartId'.$cartId.'" value="'.$value['quantity'].'">';
+              echo '<a href style="height:24px;" onclick="return updateCart('.$cartId.',1,1,'.$value['cost'].');"><i style="color:#e8554e; font-size: 24px;" class="fas fa-plus-circle"></i></a>';
+                // echo '<a href="" style="height:24px" onclick="return increaseCount(this,1);"><img style="height:36px;" src="./plus-cart.svg"></a>';
+              echo '</div>';
+              echo "<div style='float:left; height:24px; box-shadow:0 0 0 0;'>";
+              echo "<p id='removeItem".$cartId."' style='font-family: 'Roboto', sans-serif; font-weight: bold; margin-top:40px;  ><span class='removeItem'>REMOVE</span></p>";
+              echo "</div>";
+              echo "</div>";
+              echo '</div>';
+            }
+            echo "</div>";
+            echo "<div id='cartFooter' style='width:100%; background:white; border-bottom-right-radius:2px;border-bottom-left-radius:2px; padding:10px;border: 0.5px solid rgba(0,0,0,.2); border-top: 1px solid #f0f0f0; box-shadow: 0 -2px 10px 0 rgba(0,0,0,.1);box-sizing: border-box;position:sticky;' id='parent'>";
+              echo "<button class='btn child' id='continue' style='background: #D8C3A5; margin-left: 0; color: white; border-radius:2px; width:200px;float:right;font-family: Roboto,Arial,sans-serif;' >";
+              echo "<span>CONTINUE</span>";
+              echo "</button>";
+              
+              echo "</div>";
+          ?>
         </div>
       </div>
       <div id="paymentOptionTab" style="margin-bottom: 20px; border-radius: 2px;" >
         <div class="tabHeader" id="paymentOptionTabHeader" >
           <span style="width: 20px; height: 20px; border-radius: 2px; background: white;position: absolute; padding: 0 0 0 6px; color: #e8554e;font-family: Roboto,Arial,sans-serif;"><p style="line-height: 22px;">4</p></span><span ><p style="margin-left: 40px;font-family: Roboto,Arial,sans-serif; color: white; line-height: 20px;">PAYMENT OPTIONS</p></span>
         </div>
-        <div class="tabBody" id="paymentOptionTabBody" style="height: 100px;background: white;">
+        <div class="tabHeaderClose" id="paymentOptionTabHeaderClose" >
+          <span style="width: 20px; height: 20px; border-radius: 2px; background: #e0e0e0; position: absolute; padding: 0 0 0 6px; color: #e8554e;font-family: Roboto,Arial,sans-serif;"><p style="line-height: 22px;">4</p></span><span ><p style="margin-left: 40px;font-family: Roboto,Arial,sans-serif; color: #777; line-height: 20px;height: 20px; margin-bottom: 0;">PAYMENT OPTIONS</p></span>
+        </div>
+        <div class="tabBody" id="paymentOptionTabBody" style="height: 120px;background: white; padding: 20px 30px 30px 20px; ">
+          <div style="height: 60px;">
+          <div class="radio" style="width: 16px; height: 16px; border-radius: 40px; border: 2px solid #e8554e; text-align: center; padding: 2px 0 0 0px;display: inline-block;">
+            <div class="radioInside active" style="width: 8px; height: 8px; background:  #e8554e; margin: 0 auto; top:0;bottom: 0; border-radius: 8px; ">
+              <input type="radio" name="" style="visibility: hidden;">
+            </div>
+          </div>
+          <label style="margin-left: 20px;position: absolute; line-height: 15px; color:#777; font-size: 14px;font-family: Roboto,Arial,sans-serif;"><b>Cash on delivery</b></label>
+          <button type="submit" class="btn " style="float: right; background: #D8C3A5; margin-left: 0; color: white; padding: 10px 40px 10px 40px;"><b>CONFIRM ORDER</b></button>
+          </div>
+          <div>
+            <p style="color:#777; font-size: 14px;font-family: Roboto,Arial,sans-serif;">Sorry for the inconvience currently we only support cash on delivery.</p>
+          </div>
           
         </div>
       </div>
     </div>
     <div class="col-sm-4" >
-      <div style="height: 100px;background: white;">
-        
+      <div style="height: 250px;background: white; border-radius: 2px; ">
+        <?php
+        echo "<div style='border: 1px solid rgba(0,0,0,.2); height:250px;'>";
+        echo '<div style="width: 100%; height: 50px; border-bottom: 0.5px solid rgba(0,0,0,.2); padding: 10px;">';
+        echo '<h5 style="color:#878787; font-family: "Roboto", sans-serif; font-weight: bold;" >PRICE DETAILS</h5>';
+        echo '</div>';
+        echo '<div style="width:100%; height:150px; padding:20px; box-shadow:0 0 0 0;">';
+        echo "<div style='height:40px; box-shadow:0 0 0 0;'>";
+        echo '<p id="cartCount" style="float:left; margin:0;">Price (<b id="cartCountValue">'.$cartCount.'</b> items)</p>';
+        echo '<p id="totalCost" style="float:right; margin:0;">₹'.$totalCost.'</p>';
+        echo "</div>";
+        echo "<div style='height:40px; box-shadow:0 0 0 0; border-bottom:.5px dashed #4D4D4D;'>";
+        echo "<p style='float:left;'>Delivery Charges</p>";
+        echo "<p style='float:right; color:green;'>FREE</p>";
+        echo "</div>";
+        echo "<div style='height:40px; box-shadow:0 0 0 0; margin-top:20px;'>";
+        echo "<p style='float:left;'>Amount Payable</p>";
+        echo '<p id="amountPayable" style="float:right;">₹'.$totalCost.'</p>';
+        echo "</div>";
+        echo '</div>';
+        echo "</div>";
+      ?>
       </div>
     </div>
   </div>
@@ -424,6 +573,33 @@
         console.log(hash);
     });
 
+    $("#saveAndDeliveryBtn").on("click",function () {
+      $('#addressChangeBtn').show()
+      $(this).parent().parent().parent().parent().find('.tabHeader').hide()
+      $(this).parent().parent().parent().parent().find('.tabHeaderClose').css('display','table')
+      $(this).parent().parent().parent().parent().find('.tabHeaderClose').find('.tick').show()
+      $(this).parent().parent().parent().hide()
+      $("#address").show()
+
+      $("#orderSummaryTab").find('.tabHeader').show()
+      $("#orderSummaryTab").find('.tabBody').show()
+      $("#orderSummaryTab").find('.tabHeaderClose').hide()
+      return false;
+    })
+
+    $("#continue").on("click",function () {
+      $("#orderSummaryTabHeader").hide()
+      $("#orderSummaryTabHeaderClose").show()
+      $("#orderSummaryTabHeader").parent().find(".tabBody").hide();
+      $("#orderSummaryTabHeaderClose").find('.tick').show()
+      $("#cartContentCount").show()
+      $(".btnChange").show()
+      $("#paymentOptionTabHeader").show()
+      $("#paymentOptionTabHeaderClose").hide()
+      $("#paymentOptionTabBody").show()
+      return false;
+    })
+
     $(".cardOuterPart").each(function (index, value) {
       if(index%4 == 0){
         $(this).addClass("card1")
@@ -436,6 +612,42 @@
         $(this).addClass("card4")
       }
     });
+    $('.btnChange').on("click",function () {
+      if($(this).attr('id')=="loginChangeBtn"){
+        $('.tick').hide()
+        $(".btnChange").hide()
+        $("#address").hide()
+        $('addressTab').find('.tabHeaderClose').show()
+        $('addressTab').find('.tabHeader').hide()
+        $('addressTab').find('.tabBody').hide()
+        $("#cartContentCount").hide()
+        // $("#address").parent().hide()
+      }
+      else if($(this).attr('id')=="addressChangeBtn"){
+        $("#orderSummaryTabHeaderClose").find('.btn').hide()
+        $("#orderSummaryTabHeaderClose").find('.tick').hide()
+        $("#cartContentCount").hide()
+      }
+      $('.tabHeader').hide()
+      $('.tabBody').hide()
+      $('.tabHeaderClose').show()
+      $(this).parent().parent().find('.tabHeader').show()//.hide()parent().parent().closest('.tabHeader').addClass('active')
+      $(this).parent().parent().find('.tabBody').show()
+      $(this).parent().hide()
+      // $('#loginTabHeader').addClass('active')
+    })
+    $('.continue').on('click',function () {
+      resId = $(this).attr('id')
+      $(this).parent().parent().find('.tabHeader').hide()
+      $(this).parent().parent().find('.tabHeaderClose').show()
+      $(this).parent().hide()
+
+      $('#'+resId+"Header").show()
+      $('#'+resId+"Header").parent().find('.tabHeaderClose').hide()
+      $('#'+resId+"Header").parent().find('.tabBody').show()
+
+      return false;
+    })
   })
   
 </script>

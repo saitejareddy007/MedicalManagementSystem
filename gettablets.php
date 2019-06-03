@@ -48,7 +48,7 @@ table tr {
         echo "<p style='padding: 0;margin: 0;'>Available strips: ". $row["_source"]['noOfTablets'] ."</p>";
         echo "<p style='padding: 0;margin: 0;'>Cost: ". $row["_source"]['cost'] ."₹/tablet strip</p>";
         echo "<div style='width: 100%; position:absolute; right:10px; bottom:10px;'>";
-        $cartUrl = 'location.href="./cart.php"';
+        $cartUrl = 'location.href="./cart"';
         if (isset($_SESSION["cart"]) && in_array($id,array_keys($_SESSION["cart"]))){
             echo "<button class='button two goCartBtn' onclick='$cartUrl'>Go to cart</button>";
             echo "<button class='button two addCartBtn' style='display:none;' onclick='addItem($id)'>Add to cart</button>";
