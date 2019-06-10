@@ -8,28 +8,35 @@ class SearchElastic
        $this->elasticclient = Elasticsearch\ClientBuilder::create()->build();
    }
    public function Mapping(){
-$params = [
-    'index' => 'tablets',
-    'body' => [
-      'mappings' => [ 
-                  'properties' => [
-                      'id' => [
-                          'type' => 'integer',
-                      ],
-                      'tbName' => [
-                          'type' => 'text',
-                      ],
-                      'cost' => [
-                          'type' => 'float',
-                      ],
-                      'noOfTablets' => [
-                          'type' => 'integer',
-                      ],
-                  ]
-        ]
-    ]
-  ];
-       $this->elasticclient->indices()->create($params);
+    $params = [
+      'index' => 'tablets',
+      'body' => [
+        'mappings' => [
+          'docType' => [
+            'properties' => [
+              'id' => [
+                  'type' => 'integer',
+              ],
+              'tbName' => [
+                  'type' => 'text',
+              ],
+              'cost' => [
+                  'type' => 'float',
+              ],
+              'noOfTablets' => [
+                  'type' => 'integer',
+              ],
+            ]
+          ]
+        ],
+      ]
+    ];
+    try{
+      $this->elasticclient->indices()->create($params);
+    }
+    catch(Exception $e){
+      return false;
+    }
    	}
 	public function InsertData($conn){
 		$con = $conn;
@@ -42,12 +49,16 @@ $params = [
 		$params['body'][] = array(
 		  'index' => array(
 		    '_index' => 'tablets',
-		    '_id' => $row['id'],
+        '_type' => 'docType'
 		  ) ,
 		);
 		$params['body'][] = ['tbName' => $row['tbName'], 'cost' => $row['cost'], 'noOfTablets' => $row['noOfTablets'],];
 		}
-		$this->Mapping();
+		if($this->Mapping()){}
+    else{
+      return;
+    }
+
 		$responses = $client->bulk($params);
 		return true;
 	}

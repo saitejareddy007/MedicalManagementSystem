@@ -64,7 +64,7 @@ function validateAddress(){
 }
 
 function showTablets(str) {
-	
+		str = str.toLowerCase();
 		if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
@@ -103,8 +103,14 @@ function showTablets(str) {
 
             }
         };
-        xmlhttp.open("GET","http://localhost/MedicalManagementSystem/gettablets.php?q="+str,true);
-        xmlhttp.send();
+        try{
+        	xmlhttp.open("GET","/MedicalManagementSystem/gettablets.php?q="+str,true);
+       		xmlhttp.send();
+        }catch(err){
+        	xmlhttp.open("GET","/MedicalManagementSystem/../gettablets.php?q="+str,true);
+       		xmlhttp.send();
+        }
+        
 	
 }
 
@@ -134,15 +140,26 @@ function getCart() {
 			            // code for IE6, IE5
 			            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 			        }
-					xmlhttp.open("GET","http://localhost/MedicalManagementSystem/getCart.php?q=delete&&id="+id,true);
-    				xmlhttp.send();
+			        try{
+			        	xmlhttp.open("GET","/MedicalManagementSystem/getCart.php?q=delete&&id="+id,true);
+    					xmlhttp.send();
+			        }catch(e){
+			        	xmlhttp.open("GET","/MedicalManagementSystem/../getCart.php?q=delete&&id="+id,true);
+    					xmlhttp.send();
+			        }
+					
 
 				})
 
             }
         };
-        xmlhttp.open("GET","http://localhost/MedicalManagementSystem/getCart.php",true);
-        xmlhttp.send();
+        try{
+        	xmlhttp.open("GET","/MedicalManagementSystem/getCart.php",true);
+			xmlhttp.send();
+        }catch(e){
+        	xmlhttp.open("GET","/MedicalManagementSystem/../getCart.php",true);
+			xmlhttp.send();
+        }
         return false;
 	
 }

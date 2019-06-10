@@ -316,7 +316,6 @@
   
   <div class="navbar-collapse" id="navbarTogglerDemo01">
     <a class="navbar-brand mr-auto" href="http://localhost/MedicalManagementSystem/" style="color: white; font-family: 'Satisfy', cursive; font-size: 32px; padding: 0; margin: 0;">Medkart</a>
-    
   </div>
 </nav>
 <div id="checkoutView" class="container-fluid" style="background: #f9e8e5; height: 200px; padding: 5px 30px 0 30px; font-family: 'Karla', sans-serif; ">
@@ -337,14 +336,14 @@
               </p>
             </span>
             <div style="padding-left: 20px;">
-              <p style="padding-left: 20px; font-size:14px;">
+              <p style="padding-left: 20px; font-size:14px; margin-bottom: 0;">
                 <b>
                   <?php echo $_SESSION['fullName'];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +91 <?php echo $_SESSION['contactNumber'];?>
                 </b>
               </p>
             </div>
           </div>
-            <button  class="btn btnChange active waves-effect waves-light" id="loginChangeBtn" style="float: right; box-shadow: 0 0 0 0; margin-top: 0; color:  #e8554e; border: 0.5px solid #e0e0e0;">CHANGE</button>
+            <button  class="btn btnChange active waves-effect waves-light" id="loginChangeBtn" style="display:block; float: right; box-shadow: 0 0 0 0; margin-top: 0; color:  #e8554e; border: 0.5px solid #e0e0e0;">CHANGE</button>
           </div>
         <div class="tabBody" id="loginTabBody" style="height: 200px;background: white;text-align: left;">
           <p style="color: #4D4D4D; margin-bottom: 5px;">Name <b style="color: black;margin-left: 20px;"><?php echo $_SESSION['fullName'];?></b></p>
@@ -381,7 +380,7 @@
           </div>
            <label style="margin-left: 20px;position: absolute; line-height: 15px; color:#e8554e; font-size: 14px;font-family: Roboto,Arial,sans-serif;"><b>ADD A NEW ADDRESS</b></label>
            <div id="newAddressForm" style="padding-left: 35px;">
-            <form>
+            <form id="addressForm">
               <style type="text/css">
                 input.form-control:focus{
                   border-color: #e98074;
@@ -412,7 +411,9 @@
                   <label for="inputState">State</label>
                   <select id="inputState" class="form-control">
                     <option selected>Choose...</option>
-                    <option>...</option>
+                    <option value="Andhra pradesh" >Andhra pradesh</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Delhi">Delhi</option>
                   </select>
                 </div>
                 <div class="form-group col-md-2">
@@ -481,7 +482,7 @@
             }
             echo "</div>";
             echo "<div id='cartFooter' style='width:100%; background:white; border-bottom-right-radius:2px;border-bottom-left-radius:2px; padding:10px;border: 0.5px solid rgba(0,0,0,.2); border-top: 1px solid #f0f0f0; box-shadow: 0 -2px 10px 0 rgba(0,0,0,.1);box-sizing: border-box;position:sticky;' id='parent'>";
-              echo "<button class='btn child' id='continue' style='background: #D8C3A5; margin-left: 0; color: white; border-radius:2px; width:200px;float:right;font-family: Roboto,Arial,sans-serif;' >";
+              echo "<button class='btn child' id='continue' style='background: #D8C3A5; margin-left: 0; color: white; border-radius:2px; width:200px;float:right;font-family: Roboto,Arial,sans-serif; padding:10px 40px 10px 40px;' >";
               echo "<span>CONTINUE</span>";
               echo "</button>";
               
@@ -516,7 +517,7 @@
     <div class="col-sm-4" >
       <div style="height: 250px;background: white; border-radius: 2px; ">
         <?php
-        echo "<div style='border: 1px solid rgba(0,0,0,.2); height:250px;'>";
+        echo "<div style='border: 1px solid rgba(0,0,0,.09);border-radius: 2px; height:250px;'>";
         echo '<div style="width: 100%; height: 50px; border-bottom: 0.5px solid rgba(0,0,0,.2); padding: 10px;">';
         echo '<h5 style="color:#878787; font-family: "Roboto", sans-serif; font-weight: bold;" >PRICE DETAILS</h5>';
         echo '</div>';
@@ -563,7 +564,7 @@
       $(this).off('mousewheel.disableScroll')
     })
 
-    $('.radio').on('click',function () {
+    $('.radio').on('click',function() {
       $(this).find('.radioInside').toggleClass('active')
     })
     
@@ -572,8 +573,12 @@
         var hash = window.location.hash;
         console.log(hash);
     });
-
+    
     $("#saveAndDeliveryBtn").on("click",function () {
+      $("#addressForm").validate({
+        submitHandler: function() { alert("Submitted!") }
+      
+    });
       $('#addressChangeBtn').show()
       $(this).parent().parent().parent().parent().find('.tabHeader').hide()
       $(this).parent().parent().parent().parent().find('.tabHeaderClose').css('display','table')
@@ -616,11 +621,13 @@
       if($(this).attr('id')=="loginChangeBtn"){
         $('.tick').hide()
         $(".btnChange").hide()
+        $("#loginChangeBtn").show()
         $("#address").hide()
         $('addressTab').find('.tabHeaderClose').show()
         $('addressTab').find('.tabHeader').hide()
         $('addressTab').find('.tabBody').hide()
         $("#cartContentCount").hide()
+        $("#cartContentCount").text(<?php echo $cartCount;?>+" items")
         // $("#address").parent().hide()
       }
       else if($(this).attr('id')=="addressChangeBtn"){

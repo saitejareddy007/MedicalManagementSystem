@@ -2,9 +2,8 @@
     require('MedkartAPI.php');
     session_start();
     $header = apache_request_headers(); 
-        
-
     $medkartAPI = new MedkartAPI();
+
     if(isset($_SESSION['id']) && isset($_SESSION['authToken']) && $medkartAPI->validateAuthToken($_SESSION['id'], $_SESSION['authToken'])){
         $cart = json_decode($medkartAPI->getCart($_SESSION['id']),true);
         unset($_SESSION['cart']);
@@ -143,7 +142,7 @@
 			<div id="mainRight" class="col-sm-7" >
 				<div id="pageRightContent">
 
-                    <span style=" font-family: 'News Cycle', sans-serif; font-size: 32px;">Welcome to </span><span style="color: #e8554e;font-family: 'Satisfy', cursive; font-size: 32px;">Medical Managment System</span>
+                    <span style=" font-family: 'News Cycle', sans-serif; font-size: 32px;">Welcome to </span><span style="color: #e8554e;font-family: 'Satisfy', cursive; font-size: 32px;">Medkart</span>
                     <p style="font-family: 'News Cycle'; font-size: 16px; margin-bottom: 50px; width: 100%;">The best way to buy medicines</p>
                     <h4 style="font-family: 'News Cycle';">Log In</h4>
 
