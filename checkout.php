@@ -17,11 +17,11 @@
     <!-- Bootstrap CSS -->
 <!-- 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> --><!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.1/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.1/css/mdb.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -113,9 +113,6 @@
       #cartView{
         /*display: none;*/
         visibility: hidden;
-      }
-      #orderSummaryTabBody{
-        height: 530px;
       }
       .tabHeader{
         display: none;
@@ -315,7 +312,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background: #e8554e; box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);">
   
   <div class="navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand mr-auto" href="http://localhost/MedicalManagementSystem/" style="color: white; font-family: 'Satisfy', cursive; font-size: 32px; padding: 0; margin: 0;">Medkart</a>
+    <a class="navbar-brand mr-auto" href="/MedicalManagementSystem/" style="color: white; font-family: 'Satisfy', cursive; font-size: 32px; padding: 0; margin: 0;">Medkart</a>
   </div>
 </nav>
 <div id="checkoutView" class="container-fluid" style="background: #f9e8e5; height: 200px; padding: 5px 30px 0 30px; font-family: 'Karla', sans-serif; ">
@@ -380,13 +377,14 @@
           </div>
            <label style="margin-left: 20px;position: absolute; line-height: 15px; color:#e8554e; font-size: 14px;font-family: Roboto,Arial,sans-serif;"><b>ADD A NEW ADDRESS</b></label>
            <div id="newAddressForm" style="padding-left: 35px;">
-            <form id="addressForm">
+            <form id="addressForm" >
               <style type="text/css">
                 input.form-control:focus{
                   border-color: #e98074;
                 }
                 selectform-control:focus{
                   outline: 0;
+                }
               </style>
               <div class="form-row">
                 <div class="form-group col-md-6">
@@ -421,7 +419,7 @@
                   <input type="text" class="form-control" id="inputZip">
                 </div>
               </div>
-              <button id="saveAndDeliveryBtn" type="submit" class="btn " style="background: #D8C3A5; margin-left: 0; color: white; padding: 10px 40px 10px 40px;"><b>SAVE AND DELIVER HERE</b></button>
+              <button id="saveAndDeliveryBtn" type="button" class="btn " style="background: #D8C3A5; margin-left: 0; color: white; padding: 10px 40px 10px 40px;"><b>SAVE AND DELIVER HERE</b></button>
             </form>
              
            </div>
@@ -505,7 +503,7 @@
             </div>
           </div>
           <label style="margin-left: 20px;position: absolute; line-height: 15px; color:#777; font-size: 14px;font-family: Roboto,Arial,sans-serif;"><b>Cash on delivery</b></label>
-          <button type="submit" class="btn " style="float: right; background: #D8C3A5; margin-left: 0; color: white; padding: 10px 40px 10px 40px;"><b>CONFIRM ORDER</b></button>
+          <button type="submit" id="confirmOrder" class="btn " style="float: right; background: #D8C3A5; margin-left: 0; color: white; padding: 10px 40px 10px 40px;"><b>CONFIRM ORDER</b></button>
           </div>
           <div>
             <p style="color:#777; font-size: 14px;font-family: Roboto,Arial,sans-serif;">Sorry for the inconvience currently we only support cash on delivery.</p>
@@ -555,6 +553,24 @@
       }
     }
 
+    $('.removeItem').on('click',function () {
+      var xmlhttp = null;
+      var cartCount = parseInt($('#cartCountValue').text())-1;
+      $('#cartCountValue').text(cartCount)
+      var id = $(this).closest('p').attr('id').substring(10)
+      $(this).closest('.tabInCart').css('display','none')
+      updateCartValue()
+      if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+      } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      xmlhttp.open("GET","/MedicalManagementSystem/getCart.php?q=delete&&id="+id,true);
+      xmlhttp.send();
+    });
+
     $('form').on('focus', 'input[type=number]', function (e) {
       $(this).on('mousewheel.disableScroll', function (e) {
         e.preventDefault()
@@ -573,13 +589,26 @@
         var hash = window.location.hash;
         console.log(hash);
     });
-    
+    function validateAddressForm() {
+      var name = $("#inputName").val().trim();
+      var phone = $("#inputNumber").val().trim();
+      var address = $("#inputAddress").val().trim();
+      var city = $("#inputCity").val().trim();
+      var state = $("#inputState").val().trim();
+      var zipcode = $("#inputZip").val().trim();
+
+      if (!(name && phone && address && city && state && zipcode)) return true;
+      var addressStr = name+", "+address+", "+city+", "+state+", "+zipcode+".";
+
+      $.post( "confirmOrder.php", { q: "address", address: addressStr}).done(function() {
+        $("#address").text(addressStr);
+      });
+    }
     $("#saveAndDeliveryBtn").on("click",function () {
-      $("#addressForm").validate({
-        submitHandler: function() { alert("Submitted!") }
-      
-    });
+      if(validateAddressForm()) return;
+
       $('#addressChangeBtn').show()
+
       $(this).parent().parent().parent().parent().find('.tabHeader').hide()
       $(this).parent().parent().parent().parent().find('.tabHeaderClose').css('display','table')
       $(this).parent().parent().parent().parent().find('.tabHeaderClose').find('.tick').show()
@@ -593,6 +622,7 @@
     })
 
     $("#continue").on("click",function () {
+      $("#cartContentCount").text(<?php echo count($_SESSION["cart"]);?>+" items")
       $("#orderSummaryTabHeader").hide()
       $("#orderSummaryTabHeaderClose").show()
       $("#orderSummaryTabHeader").parent().find(".tabBody").hide();
@@ -654,7 +684,15 @@
       $('#'+resId+"Header").parent().find('.tabBody').show()
 
       return false;
+    });
+
+    $("#confirmOrder").on("click",function () {
+      $.post( "confirmOrder.php", { q: "confirmOrder"}).done(function() {
+        console.log("order placed");
+        window.location = "/MedicalManagementSystem/history.php"
+      });
     })
+    
   })
   
 </script>

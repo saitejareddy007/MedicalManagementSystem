@@ -2,11 +2,10 @@
 require 'vendor/autoload.php';
 class SearchElastic
 {
-   private $elasticclient = null;
-    public function __construct()
-   {
-       $this->elasticclient = Elasticsearch\ClientBuilder::create()->build();
-   }
+  private $elasticclient = null;
+  public function __construct(){
+    $this->elasticclient = Elasticsearch\ClientBuilder::create()->build();
+  }
    public function Mapping(){
     $params = [
       'index' => 'tablets',
@@ -33,6 +32,7 @@ class SearchElastic
     ];
     try{
       $this->elasticclient->indices()->create($params);
+      return true;
     }
     catch(Exception $e){
       return false;
@@ -49,15 +49,14 @@ class SearchElastic
 		$params['body'][] = array(
 		  'index' => array(
 		    '_index' => 'tablets',
-        '_type' => 'docType'
+        '_type' => 'docType',
+        '_id' => $row["id"]
 		  ) ,
 		);
 		$params['body'][] = ['tbName' => $row['tbName'], 'cost' => $row['cost'], 'noOfTablets' => $row['noOfTablets'],];
 		}
 		if($this->Mapping()){}
-    else{
-      return;
-    }
+    else return;
 
 		$responses = $client->bulk($params);
 		return true;

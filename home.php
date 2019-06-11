@@ -16,11 +16,11 @@
     <!-- Bootstrap CSS -->
 <!-- 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> --><!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.1/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.1/css/mdb.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -44,6 +44,8 @@
     <!-- font-family: 'Source Code Pro', monospace; -->
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <!-- font-family: 'Roboto', sans-serif; -->
+    <meta name="theme-color" content="#e8554e" />
+    <meta name="mobile-web-app-capable" content="yes">
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript" src="../script.js"></script>
     <style type="text/css">
@@ -257,7 +259,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background: #e8554e; box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);">
   
   <div class="navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand mr-3 ml-auto" href="http://localhost/MedicalManagementSystem/" style="color: white; font-family: 'Satisfy', cursive; font-size: 32px; padding: 0; margin: 0;">Medkart</a>
+    <a class="navbar-brand mr-3 ml-auto" href="/MedicalManagementSystem/" style="color: white; font-family: 'Satisfy', cursive; font-size: 32px; padding: 0; margin: 0;">Medkart</a>
     <ul id="mobileView" class="navbar-nav" style=" float: right;">
       <li class="mr-2 nameTab" style="width:50px;display:inline;margin:0;">
         <a class="nav-link waves-effect waves-light nameTab" href="#" style="color: white; font-family: 'Roboto', sans-serif; text-transform: capitalize;">sai <i class="fas fa-angle-down"></i></a>

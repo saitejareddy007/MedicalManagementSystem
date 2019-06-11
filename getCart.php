@@ -1,7 +1,9 @@
 <?php
 	require('MedkartAPI.php');
-    session_start();
+	session_start();
+	
     $medkartAPI = new MedkartAPI();
+
 	if(isset($_GET['q']) && $_GET['q']=="update"){
 		$_SESSION['cart'][$_GET["id"]]["quantity"]=$_GET["quantity"];
 		$medkartAPI->updateCart($_GET["id"],$_GET["quantity"]);
@@ -10,8 +12,10 @@
 		unset($_SESSION['cart'][$_GET["id"]]);
 		$medkartAPI->removeFromCart($_GET["id"]);
 	}
+	
 	if(isset($_SESSION["cart"])){
 		$cart = $_SESSION["cart"];
+		
 		echo '<div class="col-sm-7" id="cart">';
 	    echo '<div style="width:100%;height100%;" id="cartHeader">';
 	    echo '<div style="width: 100%; height: 50px; border: 0.5px solid rgba(0,0,0,.2); border-top-right-radius:2px; border-top-left-radius:2px; padding: 10px;">';
@@ -50,10 +54,10 @@
 		}
 		echo "</div>";
 		echo "<div id='cartFooter' style='width:100%; background:white; border-bottom-right-radius:2px;border-bottom-left-radius:2px; padding:10px;border: 0.5px solid rgba(0,0,0,.2); border-top: 1px solid #f0f0f0; box-shadow: 0 -2px 10px 0 rgba(0,0,0,.1);box-sizing: border-box;position:sticky;' id='parent'>";
-		echo "<button class='btn child' onclick='location.href=\"http://localhost/MedicalManagementSystem/checkout.php\"' style='color:white; font-size:20px; font-weight:bold; background: #e8554e; border-radius:2px; width:200px;float:right;' >";
+		echo "<button class='btn child' onclick='location.href=\"/MedicalManagementSystem/checkout.php\"' style='color:white; font-size:20px; font-weight:bold; background: #e8554e; border-radius:2px; width:200px;float:right;' >";
 		echo "<span>PLACE ORDER</span>";
 		echo "</button>";
-		echo "<button class='btn child' onclick='location.href=\"http://localhost/MedicalManagementSystem/\"' style='color:black; font-size:20px; font-weight:bold; background:white; border-radius:2px;float:right;'>";
+		echo "<button class='btn child' onclick='location.href=\"/MedicalManagementSystem/\"' style='color:black; font-size:20px; font-weight:bold; background:white; border-radius:2px;float:right;'>";
 		echo "<svg width='16' height='12' viewBox='0 0 16 27' xmlns='http://www.w3.org/2000/svg' ><path d='M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z' fill='#000'></path></svg>";
 		echo "<span>Continue shopping</span>";
 		echo "</button>";
@@ -82,14 +86,8 @@
 	    echo "</div>";
 	    echo '</div>';
 	}else{
-
+		return "Invalid Request";
 	}
 	
 ?>
-<!-- echo "<div style='display:inline-block;'>";
 
-echo "</div>";
-echo "<div style='display:inline-block;'>";
-echo "<p style='float:left;'>Delivery Charges</p>";
-echo "<p style='float:right; color:green;'>FREE</p>";
-echo "</div>"; -->

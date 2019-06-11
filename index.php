@@ -26,7 +26,7 @@
         ?>
         <script type="text/javascript">
             if(window.location.pathname!="/MedicalManagementSystem/"){
-                window.location.href = "http://localhost/MedicalManagementSystem"
+                window.location.href = "./"
             }
         </script>
         <?php
@@ -59,6 +59,8 @@
     <!-- font-family: 'News Cycle', sans-serif; -->
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
     <!-- font-family: 'Source Code Pro', monospace; -->
+    <meta name="theme-color" content="#e8554e" />
+    <meta name="mobile-web-app-capable" content="yes">
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript" src="../script.js"></script>
     <style type="text/css">

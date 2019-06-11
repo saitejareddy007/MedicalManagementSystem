@@ -103,14 +103,8 @@ function showTablets(str) {
 
             }
         };
-        try{
-        	xmlhttp.open("GET","/MedicalManagementSystem/gettablets.php?q="+str,true);
-       		xmlhttp.send();
-        }catch(err){
-        	xmlhttp.open("GET","/MedicalManagementSystem/../gettablets.php?q="+str,true);
-       		xmlhttp.send();
-        }
-        
+    	xmlhttp.open("GET","/MedicalManagementSystem/gettablets.php?q="+str,true);
+   		xmlhttp.send();        
 	
 }
 
@@ -140,26 +134,17 @@ function getCart() {
 			            // code for IE6, IE5
 			            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 			        }
-			        try{
-			        	xmlhttp.open("GET","/MedicalManagementSystem/getCart.php?q=delete&&id="+id,true);
-    					xmlhttp.send();
-			        }catch(e){
-			        	xmlhttp.open("GET","/MedicalManagementSystem/../getCart.php?q=delete&&id="+id,true);
-    					xmlhttp.send();
-			        }
+		        	xmlhttp.open("GET","/MedicalManagementSystem/getCart.php?q=delete&&id="+id,true);
+					xmlhttp.send();
 					
 
-				})
+				});
 
             }
         };
-        try{
-        	xmlhttp.open("GET","/MedicalManagementSystem/getCart.php",true);
-			xmlhttp.send();
-        }catch(e){
-        	xmlhttp.open("GET","/MedicalManagementSystem/../getCart.php",true);
-			xmlhttp.send();
-        }
+        
+    	xmlhttp.open("GET","/MedicalManagementSystem/getCart.php",true);
+		xmlhttp.send();
         return false;
 	
 }
@@ -191,7 +176,6 @@ function updateCart(id,quantity,type,cost) {
 	var quantityValue = parseInt(document.getElementById('cartId'+id.toString()).value);
 	// alert($('#cartId'+id.toString()).data('value'))
 	if(isNaN(quantityValue)){
-		
 		return false;
 	}
 	if(type==-1){
@@ -225,9 +209,9 @@ function updateCart(id,quantity,type,cost) {
     	}
 	};
 	if(quantityValue==0)
-    	xmlhttp.open("GET","http://localhost/MedicalManagementSystem/getCart.php?q=delete&&id="+id,true);
+    	xmlhttp.open("GET","/MedicalManagementSystem/getCart.php?q=delete&&id="+id,true);
     else
-    	xmlhttp.open("GET","http://localhost/MedicalManagementSystem/getCart.php?q=update&&id="+id+"&&quantity="+quantityValue,true);
+    	xmlhttp.open("GET","/MedicalManagementSystem/getCart.php?q=update&&id="+id+"&&quantity="+quantityValue,true);
     xmlhttp.send();
 
 	return false;
@@ -277,10 +261,8 @@ function addItem(id) {
     	if (this.readyState == 4 && this.status == 200) {
     	}
 	};
-    xmlhttp.open("GET","http://localhost/MedicalManagementSystem/addItem.php?q="+id,true);
+    xmlhttp.open("GET","/MedicalManagementSystem/addItem.php?q="+id,true);
     xmlhttp.send();
-    // window.location.href = "./cart.php";
-    // alert(this.innerHTML)
-
-	return false;
+    
+    return false;
 }

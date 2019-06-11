@@ -1,6 +1,6 @@
 <?php
+	include 'elasticSearch.php';
 	class MedkartAPI{
-
 		private $conn = null;
 
 		public function __construct(){
@@ -8,6 +8,12 @@
 			if(mysqli_connect_errno()){
 				echo 'Failed to connect MySQL'.mysqli_connect_error();
 			}
+			$elasticSearch = new SearchElastic();
+			$elasticSearch->InsertData($this->conn);
+		}
+
+		public function getDatabaseConnection(){
+			return $this->conn;
 		}
 
 		public function authentication($username, $password){
@@ -51,6 +57,14 @@
 			$query = "SELECT cart.id as cartId, tablets.id, tablets.tbName, tablets.cost, cart.quantity FROM tablets,cart WHERE cart.userId='$userId' and cart.itemId=tablets.id";
 			$result = mysqli_query($this->conn,$query);
 			return json_encode($this->convertToJSON($result));
+		}
+
+		public function confirmOrder($items,$userId,$address){
+			mysqli_query($this->conn,"INSERT INTO sales(item,userID,adress) VALUES('$items','$userId','$address')");
+			foreach ($item as $key => $value) {
+				echo "$value";
+			}
+			return true;
 		}
 
 		public static function convertToJSON($result){
