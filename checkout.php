@@ -46,6 +46,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <!-- font-family: 'Roboto', sans-serif; -->
     <script type="text/javascript" src="script.js"></script>
+    <meta name="theme-color" content="#e8554e" />
+    <meta name="mobile-web-app-capable" content="yes">
     <style type="text/css">
 	   body{
 	    font-family: 'News Cycle', sans-serif;
@@ -435,7 +437,7 @@
             <div style="padding-left: 20px;display: inline-block;float: left; height: 20px;">
               <p id="cartContentCount" style="padding-left: 20px; font-size:14px; margin-top: 0;" align="justify-content">
                 <b>
-                  6 items
+                  <b class="cartCountValue">6</b> items
                 </b>
               </p>
           </div>
@@ -622,7 +624,7 @@
     })
 
     $("#continue").on("click",function () {
-      $("#cartContentCount").text(<?php echo count($_SESSION["cart"]);?>+" items")
+      $("#cartContentCount .cartCountValue").text(<?php echo count($_SESSION["cart"]);?>)
       $("#orderSummaryTabHeader").hide()
       $("#orderSummaryTabHeaderClose").show()
       $("#orderSummaryTabHeader").parent().find(".tabBody").hide();
@@ -657,7 +659,7 @@
         $('addressTab').find('.tabHeader').hide()
         $('addressTab').find('.tabBody').hide()
         $("#cartContentCount").hide()
-        $("#cartContentCount").text(<?php echo $cartCount;?>+" items")
+        $("#cartContentCount .cartCountValue").text(<?php echo count($_SESSION["cart"]);?>)
         // $("#address").parent().hide()
       }
       else if($(this).attr('id')=="addressChangeBtn"){

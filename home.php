@@ -48,6 +48,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript" src="../script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <style type="text/css">
 	   body{
 	    font-family: 'News Cycle', sans-serif;
@@ -85,10 +86,7 @@
       .card4{
         padding: 10px 0 0 10px;
       }
-      #cartView{
-        /*display: none;*/
-        visibility: hidden;
-      }
+      
       .button.two {
         border-radius: 25px;
         float: right;
@@ -248,7 +246,7 @@
     .two:focus{
       border: 1px solid #f9e8e5;
     }
-		hr{
+		.hrDesign{
 			display: block; height: .5px;
 			border: 0; border-top: .1px solid #e8554e;
 			margin: 1em 0; padding: 0;
@@ -262,13 +260,15 @@
     <a class="navbar-brand mr-3 ml-auto" href="/MedicalManagementSystem/" style="color: white; font-family: 'Satisfy', cursive; font-size: 32px; padding: 0; margin: 0;">Medkart</a>
     <ul id="mobileView" class="navbar-nav" style=" float: right;">
       <li class="mr-2 nameTab" style="width:50px;display:inline;margin:0;">
-        <a class="nav-link waves-effect waves-light nameTab" href="#" style="color: white; font-family: 'Roboto', sans-serif; text-transform: capitalize;">sai <i class="fas fa-angle-down"></i></a>
+        <a class="nav-link waves-effect waves-light nameTab" href="#" style="color: white; font-family: 'Roboto', sans-serif; text-transform: capitalize;"><?php echo $fullName; ?> <i class="fas fa-angle-down"></i></a>
         <div class="usernameTabArrow" style="width: 25px; height: 25px; position: absolute; background: white; transform: rotate(45deg); z-index: 20; margin-left: 10px; display: none;"></div>
         <div class="usernameTab" style="width: 200px; position: absolute; background: white; margin: 13px auto 0px -75px; z-index: 20; border-radius: 3px; box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px 0px; display: none;">
-          <div id="profile" class="listItem">
+          <div id="profile" class="listItem" style="border-bottom: .5px solid #e8554e;">
             <span style="font-family: 'Roboto', sans-serif;"><i class="fas fa-user-alt" style="margin-right: 10px; color: #e8554e;"></i> Profile</span>
           </div>
-          <hr style="padding: 0; margin: 0;color: #e8554e;">
+          <div class="listItem orders" style="border-bottom: .5px solid #e8554e;">
+            <span style="font-family: 'Roboto', sans-serif;"><svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="12" class="" viewBox="0 0 16 12"><g fill="none" fill-rule="evenodd"><path fill="#e8554e" d="M6.038 11.682h8.407c.565 0 1.018-.38 1.13-.855V.847H.426v9.98c0 .475.452.855 1.017.855h2.232v-2.98H1.94L4.776 6l2.996 2.703H6.038v2.98z"></path></g></svg> Orders</span>
+          </div>
           <div class="listItem logout">
             <span style="font-family: 'Roboto', sans-serif;"><i class="fas fa-sign-out-alt" style="margin-right: 10px; color: #e8554e;"></i> Logout</span>
           </div>
@@ -292,10 +292,12 @@
         <a class="nav-link nameTab" href="#" style="color: white; font-family: 'Roboto', sans-serif; text-transform: capitalize;"><?php echo $fullName." "; ?><i class="fas fa-angle-down"></i></a>
         <div class="usernameTabArrow" style="width: 25px; height: 25px; position: absolute; background: white; transform: rotate(45deg);z-index: 9;margin-left:10px;"></div>
         <div class="usernameTab" style="width: 200px; position: absolute; background: white; margin: 0 auto; margin-left: -75px;margin-top:13px; z-index: 10; border-radius: 3px; box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);">
-        	<div id="profile" class="listItem">
+        	<div id="profile" class="listItem" style="border-bottom: .5px solid #e8554e;">
         		<span style="font-family: 'Roboto', sans-serif;"><i class="fas fa-user-alt" style="margin-right: 10px; color: #e8554e;"></i> Profile</span>
         	</div>
-        	<hr style="padding: 0; margin: 0;color: #e8554e;">
+          <div class="listItem orders" style="border-bottom: .5px solid #e8554e;">
+            <span style="font-family: 'Roboto', sans-serif;"><svg style="margin-right: 10px;" xmlns="http://www.w3.org/2000/svg" width="16" height="12" class="" viewBox="0 0 16 12"><g fill="none" fill-rule="evenodd"><path fill="#e8554e" d="M6.038 11.682h8.407c.565 0 1.018-.38 1.13-.855V.847H.426v9.98c0 .475.452.855 1.017.855h2.232v-2.98H1.94L4.776 6l2.996 2.703H6.038v2.98z"></path></g></svg> Orders</span>
+          </div>
         	<div class="listItem logout">
         		<span style="font-family: 'Roboto', sans-serif;"><i class="fas fa-sign-out-alt" style="margin-right: 10px; color: #e8554e;"></i> Logout</span>
         	</div>
@@ -344,7 +346,11 @@
   
 </div>
 <div id="cartContent" class="container-fluid" style="background: #f9e8e5; height: 200px; padding: 5px 30px 0 30px; font-family: 'Karla', sans-serif;">
-<div class="row" id="cartView">
+  <div class="row" id="cartView">
+  </div>
+</div>
+<div id="ordersContent" class="container-fluid" style="background: #f9e8e5; height: 200px; padding: 5px 30px 0 30px; font-family: 'Karla', sans-serif;">
+  <div class="row" id="ordersView">
   </div>
 </div>
 <script type="text/javascript">
@@ -352,11 +358,15 @@
     window.onpopstate = function (event) {
       if(event.state==null){
         showTablets("")
+        // getOrders()
       }else{
         cartIconClicked(2)
       }
     }
     
+    $('.orders').on('click',function (argument) {
+      getOrders();
+    })
 
     $(window).on('hashchange', function(){
         var hash = window.location.hash;
@@ -431,18 +441,26 @@
 </body>
 </html>
 <?php
-if(isset($header['Page'])){
+if(isset($header['Page']) && $header['Page']=="cart"){
 
   ?>
   <script type="text/javascript">
     cartIconClicked(2)
   </script>
-<?php
+  <?php
+}
+else if(isset($header['Page']) && $header['Page']=="orders") {
+  ?>
+  <script type="text/javascript">
+    getOrders(2)
+  </script>
+  <?php
 }
 else{
   ?>
   <script type="text/javascript">
     showTablets("")
+    // getOrders()
   </script>
   
   <?php

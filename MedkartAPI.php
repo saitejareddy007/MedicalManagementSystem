@@ -60,10 +60,8 @@
 		}
 
 		public function confirmOrder($items,$userId,$address){
-			mysqli_query($this->conn,"INSERT INTO sales(item,userID,adress) VALUES('$items','$userId','$address')");
-			foreach ($item as $key => $value) {
-				echo "$value";
-			}
+			
+			mysqli_query($this->conn,"INSERT INTO sales(item,userId,address) VALUES('$items','$userId','$address')");
 			return true;
 		}
 

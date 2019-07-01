@@ -63,6 +63,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript" src="../script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <style type="text/css">
     	body{
     		font-family: 'News Cycle', sans-serif;
@@ -122,14 +123,16 @@
     			
     		}
             #mainRight{
-                height: 800px;
+                transform: rotate(0deg);
+                width: 100%;
             }
     		#pageRightContent{
+                transform: rotate(0deg);
                 top:20%;
                 left: 0;
     			width: 90%;
     			min-width: 0px;
-                height: 800px;
+                height: 100%;
                 margin: 0 auto;
     		}
     	}

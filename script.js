@@ -51,7 +51,6 @@ function validateCreateAccountForm(){
 }
 
 function validateAddress(){
-
 	var city 		= document.forms['placeOrderForm']['city'].value==""||null;
 	var locality 	= document.forms['placeOrderForm']['locality'].value==""||null;
 	var Address 	= document.forms['placeOrderForm']['Address'].value==""||null;
@@ -65,164 +64,55 @@ function validateAddress(){
 
 function showTablets(str) {
 		str = str.toLowerCase();
-		if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("tabletsView").innerHTML = this.responseText;
-                $(".cardOuterPart").each(function (index, value) {
-			      if(index%4 == 0){
-			        $(this).addClass("card1")
-			      }else if((index-1)%4 == 0){
-			        $(this).addClass("card2")
-			      }
-			      else if((index-2)%4 == 0){
-			        $(this).addClass("card3")
-			      }else{
-			        $(this).addClass("card4")
-			      }
-			    });
+		$.get("/MedicalManagementSystem/gettablets.php?q="+str).done(function (data) {
+			$("#tabletsView").html(data);
+            $(".cardOuterPart").each(function (index, value) {
+			    if(index%4 == 0){
+			    	$(this).addClass("card1")
+			    }else if((index-1)%4 == 0){
+			    	$(this).addClass("card2")
+			    }
+			    else if((index-2)%4 == 0){
+			    	$(this).addClass("card3")
+			    }else{
+			    	$(this).addClass("card4")
+			    }
+		    });
 
-                $(".addCartBtn").on("click",function () {
-                	$(this).css("display","none");
-					$(this).closest('div').find('.goCartBtn').css("display","block");
-				});
-				if(history.state!=null){
-					history.back();
-				}
-               	$('.cartIcon').each(function () {
-               		$(this).show()
-               	})
-				document.getElementById('tabletsContent').style.display="block";
-				document.getElementById('cartView').style.visibility="hidden";
-
-            }
-        };
-    	xmlhttp.open("GET","/MedicalManagementSystem/gettablets.php?q="+str,true);
-   		xmlhttp.send();        
-	
-}
-
-
-function getCart() {
-		var xmlhttp = null;
-		if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("cartView").innerHTML = this.responseText;
-                $('.removeItem').on('click',function () {
-                	var cartCount = parseInt($('#cartCountValue').text())-1;
-					$('#cartCountValue').text(cartCount)
-                	var id = $(this).closest('p').attr('id').substring(10)
-					$(this).closest('.tabInCart').css('display','none')
-					updateCartValue()
-					if (window.XMLHttpRequest) {
-			            // code for IE7+, Firefox, Chrome, Opera, Safari
-			            xmlhttp = new XMLHttpRequest();
-			        } else {
-			            // code for IE6, IE5
-			            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-			        }
-		        	xmlhttp.open("GET","/MedicalManagementSystem/getCart.php?q=delete&&id="+id,true);
-					xmlhttp.send();
-					
-
-				});
-
-            }
-        };
-        
-    	xmlhttp.open("GET","/MedicalManagementSystem/getCart.php",true);
-		xmlhttp.send();
-        return false;
-	
-}
-
-function updateCartValue() {
-	var totalCost = 0
-	$('.tabInCart').each(function (index) {
-		if ($(this).css('display') != 'none') {
-			var text = $(this).find(".cost").text()
-			totalCost+=parseInt(text.substring(6,text.length-1))
-		}
-	})
-	$('#amountPayable').text("₹"+totalCost)
-	$('#totalCost').text("₹"+totalCost)
-}
-var inputField = 0
-function getValue(id) {
-	inputField = id.value
-}
-function changeValue(id) {
-	// body...
-	if(isNaN(parseInt(id.value))){
-		id.value = (inputField)
-	}
-}
-
-
-function updateCart(id,quantity,type,cost) {
-	var quantityValue = parseInt(document.getElementById('cartId'+id.toString()).value);
-	// alert($('#cartId'+id.toString()).data('value'))
-	if(isNaN(quantityValue)){
+            $(".addCartBtn").on("click",function () {
+            	$(this).css("display","none");
+				$(this).closest('div').find('.goCartBtn').css("display","block");
+			});
+			if(history.state!=null){
+				history.back();
+			}
+           	$('.cartIcon').each(function () {
+           		$(this).show();
+           	})
+			document.getElementById('tabletsContent').style.display="block";
+			document.getElementById('cartContent').style.display="none";
+			document.getElementById('ordersContent').style.display="none";
+		});
 		return false;
-	}
-	if(type==-1){
-		if (quantityValue==1) {
-			return false;
-		}
-		var totalCost = "₹"+(parseInt($('#amountPayable').text().substring(1))-cost)
-		
-		quantityValue-=1;
-	}else if(type==1){
-		var totalCost = "₹"+(parseInt($('#amountPayable').text().substring(1))+cost)
-		quantityValue+=1;
-	}
-	updateCartValue()
-	document.getElementById('quantity'+id.toString()).innerHTML = "Quantity: "+quantityValue
-	document.getElementById('cost'+id.toString()).innerHTML = "Cost: "+(quantityValue*cost)+"₹"
-	document.getElementById('cartId'+id.toString()).value = quantityValue;
+}
 
-	// document.getElementByClassName('tabInCart').style.display="none"
-	updateCartValue()
-	if (window.XMLHttpRequest) {
-		// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp = new XMLHttpRequest();
-	} else {
-    	// code for IE6, IE5
-    	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+function getOrders(id=1) {
+	document.getElementById('tabletsContent').style.display="none";
+	document.getElementById('cartContent').style.display="none";
+	document.getElementById('ordersContent').style.display="block";
+	$.get("/MedicalManagementSystem/getCart.php?q=cart", { q: "orders"}).done(function(data) {
+        $("#ordersView").html(data);
+    });
+    if (id==1) {
+		history.pushState("{'page':'orders'}", "orders", "orders");
 	}
-	xmlhttp.onreadystatechange = function() {
-    	if (this.readyState == 4 && this.status == 200) {
-
-    	}
-	};
-	if(quantityValue==0)
-    	xmlhttp.open("GET","/MedicalManagementSystem/getCart.php?q=delete&&id="+id,true);
-    else
-    	xmlhttp.open("GET","/MedicalManagementSystem/getCart.php?q=update&&id="+id+"&&quantity="+quantityValue,true);
-    xmlhttp.send();
-
 	return false;
 }
 
-
-
 function cartIconClicked(id=1){
 	document.getElementById('tabletsContent').style.display="none";
-	// document.getElementById('tabletsView').style.margin=0;
-	document.getElementById('cartView').style.visibility="visible";
+	document.getElementById('ordersContent').style.display="none";
+	document.getElementById('cartContent').style.display="block";
 	$('.cartIcon').each(function () {
         $(this).hide()
     })
@@ -237,32 +127,78 @@ function cartIconClicked(id=1){
 	return false;
 }
 
-function addItem(id) {
+function getCart() {
+	$.get( "/MedicalManagementSystem/getCart.php?q=cart").done(function(data) {
+        $("#cartView").html(data);
+        $('.removeItem').on('click',function () {
+        	var cartCount = parseInt($($('.cartCountValue')[0]).text())-1;
+			$('.cartCountValue').text(cartCount)
+        	var id = $(this).closest('p').attr('id').substring(10)
+			$(this).closest('.tabInCart').css('display','none')
+			updateCartValue()
+			$.get("/MedicalManagementSystem/getCart.php?q=delete&&id="+id);
+		});
+    });
+	return false;
+	
+}
 
-	$('.cartCount').each(function () {
-		$(this).show();
+function updateCartValue() {
+	var totalCost = 0
+	$('.tabInCart').each(function (index) {
+		if ($(this).css('display') != 'none') {
+			var text = $(this).find(".cost").text()
+			totalCost+=parseInt(text.substring(6,text.length-1))
+		}
 	})
-	var cartCount = 0
-	$('.cartCount').each(function () {
-		 cartCount = $(this).text();
-	})
-	cartCount = cartCount==""?0:cartCount;
-	$('.cartCount').each(function () {
-		$(this).text(parseInt(cartCount)+1)
-	})
-	if (window.XMLHttpRequest) {
-		// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp = new XMLHttpRequest();
-	} else {
-    	// code for IE6, IE5
-    	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	$('#amountPayable').text("₹"+totalCost)
+	$('#totalCost').text("₹"+totalCost)
+}
+
+var inputField = 0
+
+function getValue(id) {
+	inputField = id.value
+}
+
+function changeValue(id) {
+	// body...
+	if(isNaN(parseInt(id.value))){
+		id.value = (inputField)
 	}
-	xmlhttp.onreadystatechange = function() {
-    	if (this.readyState == 4 && this.status == 200) {
-    	}
-	};
-    xmlhttp.open("GET","/MedicalManagementSystem/addItem.php?q="+id,true);
-    xmlhttp.send();
-    
+}
+
+
+function updateCart(id,quantity,type,cost) {
+	var quantityValue = parseInt($('#cartId'+id.toString()).val());
+	if(isNaN(quantityValue)) return false;
+	if(type==-1){
+		if (quantityValue==1) return false;
+		var totalCost = "₹"+(parseInt($('#amountPayable').text().substring(1))-cost)
+		quantityValue-=1;
+	}else if(type==1){
+		var totalCost = "₹"+(parseInt($('#amountPayable').text().substring(1))+cost)
+		quantityValue+=1;
+	}
+	$('#quantity'+id.toString()).html("Quantity: "+quantityValue)
+	$('#cost'+id.toString()).html("Cost: "+(quantityValue*cost)+"₹")
+	$('#cartId'+id.toString()).val(quantityValue);
+
+	updateCartValue()
+
+	if(quantityValue==0)
+    	$.get("/MedicalManagementSystem/getCart.php?q=delete&&id="+id);
+    else
+    	$.get("/MedicalManagementSystem/getCart.php?q=update&&id="+id+"&&quantity="+quantityValue);
+
+	return false;
+}
+
+
+function addItem(id) {
+	let cartCount = $($('.cartCount')[0]).text();
+	cartCount = cartCount==""?0:cartCount;
+	$('.cartCount').text(parseInt(cartCount)+1)
+	$.get("/MedicalManagementSystem/addItem.php?q="+id);
     return false;
 }

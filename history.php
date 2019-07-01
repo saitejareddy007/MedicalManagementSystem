@@ -47,8 +47,14 @@
 				foreach (json_decode($row[2]) as $key => $value) {
 					$tbresult = mysqli_query($con,"SELECT tbName from tablets WHERE id=".$key);
 					$tbrow = $tbresult->fetch_assoc();
-					echo $tbrow['tbName']." X ".$value->quantity." = ₹".($value->price*$value->quantity)."<br>";
-					$total += ($value->price*$value->quantity);
+					if(isset($value->price)){
+						$price = $value->price;
+					}
+					else{
+						$price = $value->cost;
+					}
+					echo $tbrow['tbName']." X ".$value->quantity." = ₹".($price*$value->quantity)."<br>";
+					$total += ($price*$value->quantity);
 				}
 				echo "Total amount to be piad: ₹".$total;
 				echo "</div>";
