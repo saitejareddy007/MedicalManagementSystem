@@ -1,7 +1,7 @@
 <?php
     require('MedkartAPI.php');
     session_start();
-    $header = apache_request_headers(); 
+    // $header = apache_request_headers(); 
     $medkartAPI = new MedkartAPI();
 
     if(isset($_SESSION['id']) && isset($_SESSION['authToken']) && $medkartAPI->validateAuthToken($_SESSION['id'], $_SESSION['authToken'])){
