@@ -66,7 +66,7 @@
 		}
 
 		public static function convertToJSON($result){
-			if (mysqli_num_rows($result)==0){
+			if (!$result && mysqli_num_rows($result)==0){
 				return null;
 			}
 			$rows = array();
