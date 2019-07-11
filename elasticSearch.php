@@ -11,7 +11,7 @@ class SearchElastic
       'index' => 'tablets',
       'body' => [
         'mappings' => [
-          'docType' => [
+          // 'docType' => [
             'properties' => [
               'id' => [
                   'type' => 'integer',
@@ -26,7 +26,7 @@ class SearchElastic
                   'type' => 'integer',
               ],
             ]
-          ]
+          // ]
         ],
       ]
     ];
@@ -49,7 +49,7 @@ class SearchElastic
 		$params['body'][] = array(
 		  'index' => array(
 		    '_index' => 'tablets',
-        '_type' => 'docType',
+        // '_type' => 'docType',
         '_id' => $row["id"]
 		  ) ,
 		);
