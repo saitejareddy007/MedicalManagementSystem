@@ -9,157 +9,157 @@
 <html>
 <head>
 	<title></title>
-	<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-<!-- 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> --><!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.1/css/mdb.min.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <!-- 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> --><!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.1/css/mdb.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
-    <!-- font-family: 'Karla', sans-serif; -->
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-    <!-- font-family: 'Indie Flower', cursive; -->
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
-    <!-- font-family: 'Dancing Script', cursive; -->
-    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
-    <!-- font-family: 'Satisfy', cursive; -->
-    <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
-    <!-- font-family: 'Cuprum', sans-serif; -->
-    <link href="https://fonts.googleapis.com/css?family=News+Cycle" rel="stylesheet">
-    <!-- font-family: 'News Cycle', sans-serif; -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
-    <!-- font-family: 'Source Code Pro', monospace; -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <!-- font-family: 'Roboto', sans-serif; -->
-    <meta name="theme-color" content="#e8554e" />
-    <meta name="mobile-web-app-capable" content="yes">
-    <script type="text/javascript" src="script.js"></script>
-    <script type="text/javascript" src="../script.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-    <style type="text/css">
-	   body{
-	    font-family: 'News Cycle', sans-serif;
-      background: #f9e8e5;
-      padding-top: 65px;
-	   }
-     .removeItem{
-      cursor: pointer;
-     }
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+  <!-- font-family: 'Karla', sans-serif; -->
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <!-- font-family: 'Indie Flower', cursive; -->
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+  <!-- font-family: 'Dancing Script', cursive; -->
+  <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+  <!-- font-family: 'Satisfy', cursive; -->
+  <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
+  <!-- font-family: 'Cuprum', sans-serif; -->
+  <link href="https://fonts.googleapis.com/css?family=News+Cycle" rel="stylesheet">
+  <!-- font-family: 'News Cycle', sans-serif; -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
+  <!-- font-family: 'Source Code Pro', monospace; -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <!-- font-family: 'Roboto', sans-serif; -->
+  <meta name="theme-color" content="#e8554e" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <script type="text/javascript" src="script.js"></script>
+  <script type="text/javascript" src="../script.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <style type="text/css">
+   body{
+    font-family: 'News Cycle', sans-serif;
+    background: #f9e8e5;
+    padding-top: 65px;
+   }
+   .removeItem{
+    cursor: pointer;
+   }
+    
+    .curve {
+      background-color: #8aa7ca;
+      height: 150px;
+      width: 160px;
+      border-bottom-right-radius: 1000px 500px;
+    }
+    .card{
+      border-radius: 3px;
+      margin:  0; 
+      height: 150px; 
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,.08); 
+      padding: 10px;
+      min-width: 200px;
+    }
+
+    .card1{
+      padding: 10px 10px 0 0px;
+    }
+    .card2{
+      padding: 10px 5px 0 0;
+    }
+    .card3{
+      padding: 10px 0 0 5px;
+    }
+    .card4{
+      padding: 10px 0 0 10px;
+    }
+    
+    .button.two {
+      border-radius: 25px;
+      float: right;
+      display: block;
+      position: relative;
+      width: 100px;
+      color: #fff;
+      text-align: center;
+      background-color: #e8554e;
+      border: none;
+      background-repeat: no-repeat;
+      background-position: -120px -120px, 0 0;
       
-      .curve {
-        background-color: #8aa7ca;
-        height: 150px;
-        width: 160px;
-        border-bottom-right-radius: 1000px 500px;
-      }
-      .card{
-        border-radius: 3px;
-        margin:  0; 
-        height: 150px; 
-        box-shadow: 0 2px 4px 0 rgba(0,0,0,.08); 
-        padding: 10px;
-        min-width: 200px;
-      }
-
-      .card1{
-        padding: 10px 10px 0 0px;
-      }
-      .card2{
-        padding: 10px 5px 0 0;
-      }
-      .card3{
-        padding: 10px 0 0 5px;
-      }
-      .card4{
-        padding: 10px 0 0 10px;
-      }
+      background-image: -webkit-linear-gradient(
+        top left,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 37%,
+        rgba(255, 255, 255, 0.8) 45%,
+        rgba(255, 255, 255, 0.0) 50%
+      );
+      background-image: -moz-linear-gradient(
+        0 0,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 37%,
+        rgba(255, 255, 255, 0.8) 45%,
+        rgba(255, 255, 255, 0.0) 50%
+      );    
+      background-image: -o-linear-gradient(
+        0 0,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 37%,
+        rgba(255, 255, 255, 0.8) 45%,
+        rgba(255, 255, 255, 0.0) 50%
+      );
+      background-image: linear-gradient(
+        0 0,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.2) 37%,
+        rgba(255, 255, 255, 0.8) 45%,
+        rgba(255, 255, 255, 0.0) 50%
+      );
       
-      .button.two {
-        border-radius: 25px;
-        float: right;
-        display: block;
-        position: relative;
-        width: 100px;
-        color: #fff;
-        text-align: center;
-        background-color: #e8554e;
-        border: none;
-        background-repeat: no-repeat;
-        background-position: -120px -120px, 0 0;
-        
-        background-image: -webkit-linear-gradient(
-          top left,
-          rgba(255, 255, 255, 0.2) 0%,
-          rgba(255, 255, 255, 0.2) 37%,
-          rgba(255, 255, 255, 0.8) 45%,
-          rgba(255, 255, 255, 0.0) 50%
-        );
-        background-image: -moz-linear-gradient(
-          0 0,
-          rgba(255, 255, 255, 0.2) 0%,
-          rgba(255, 255, 255, 0.2) 37%,
-          rgba(255, 255, 255, 0.8) 45%,
-          rgba(255, 255, 255, 0.0) 50%
-        );    
-        background-image: -o-linear-gradient(
-          0 0,
-          rgba(255, 255, 255, 0.2) 0%,
-          rgba(255, 255, 255, 0.2) 37%,
-          rgba(255, 255, 255, 0.8) 45%,
-          rgba(255, 255, 255, 0.0) 50%
-        );
-        background-image: linear-gradient(
-          0 0,
-          rgba(255, 255, 255, 0.2) 0%,
-          rgba(255, 255, 255, 0.2) 37%,
-          rgba(255, 255, 255, 0.8) 45%,
-          rgba(255, 255, 255, 0.0) 50%
-        );
-        
-        -moz-background-size: 250% 250%, 100% 100%;
-             background-size: 250% 250%, 100% 100%;
-        
-        -webkit-transition: background-position 0s ease;
-           -moz-transition: background-position 0s ease;       
-             -o-transition: background-position 0s ease;
-                transition: background-position 0s ease;
-}
-  #searchForm{
-    width: 40%;
-  }
-		.button.two:hover {
-		  background-position: 0 0, 0 0;
-		  
-		  -webkit-transition-duration: 0.5s;
-		     -moz-transition-duration: 0.5s;
-		          transition-duration: 0.5s;
-		}
-	   #cart{
-        margin: 0; 
-        padding: 10px 7px 0 0;
-        text-transform: capitalize; 
-        margin-bottom:25px;
-      }
-      #cartSummary{
-        margin: 0; 
-        padding:10px 0 0 7px; 
-        position:relative;
-      }
-      #mobileView{
-      display: none;
+      -moz-background-size: 250% 250%, 100% 100%;
+           background-size: 250% 250%, 100% 100%;
+      
+      -webkit-transition: background-position 0s ease;
+         -moz-transition: background-position 0s ease;       
+           -o-transition: background-position 0s ease;
+              transition: background-position 0s ease;
+    }
+    #searchForm{
+      width: 40%;
+    }
+  	.button.two:hover {
+  	  background-position: 0 0, 0 0;
+  	  
+  	  -webkit-transition-duration: 0.5s;
+  	     -moz-transition-duration: 0.5s;
+  	          transition-duration: 0.5s;
+  	}
+    #cart{
+      margin: 0; 
+      padding: 10px 7px 0 0;
+      text-transform: capitalize; 
+      margin-bottom:25px;
+    }
+    #cartSummary{
+      margin: 0; 
+      padding:10px 0 0 7px; 
+      position:relative;
+    }
+    #mobileView{
+    display: none;
     }
     #laptopView{
       display: inherit;
@@ -168,14 +168,14 @@
     #cartFooter{
       height:80px;
     }
-    
-		@media (max-width: 991.98px) { 
+
+  	@media (max-width: 991.98px) { 
       body{
-      padding-top: 100px;
-    }
-			.card1,.card2,.card3,.card4{
-				padding: 10px 0 0 0;
-			}
+        padding-top: 100px;
+      }
+  		.card1,.card2,.card3,.card4{
+  			padding: 10px 0 0 0;
+  		}
       #cart{
         padding-left: 0;
         padding-right: 0;
@@ -197,26 +197,26 @@
       display: none;
       }
     }
-		.listItem{
-			width: 100%;
-			height: 50px;
-			padding: 10px;
-		    top: 0;
-		    bottom: 0;
-		    left: 0;
-		    right: 0;
-		    margin: auto;
-		    text-align: left;
-		}
-		.listItem:hover{
-			background: #f9e8e5;
-		}
-		.usernameTabArrow,.usernameTab{
-			display: none;
-		}
+  	.listItem{
+  		width: 100%;
+  		height: 50px;
+  		padding: 10px;
+  	    top: 0;
+  	    bottom: 0;
+  	    left: 0;
+  	    right: 0;
+  	    margin: auto;
+  	    text-align: left;
+  	}
+  	.listItem:hover{
+  		background: #f9e8e5;
+  	}
+  	.usernameTabArrow,.usernameTab{
+  		display: none;
+  	}
     .child{
       display: table-cell;
-  vertical-align: middle;
+      vertical-align: middle;
     }
 
     #cartHeader, #cartSummary div{
@@ -228,30 +228,30 @@
     }
 
     button:focus,
-		textarea:focus, 
-		textarea.form-control:focus, 
-		input.form-control:focus, 
-		input[type=text]:focus, 
-		input[type=password]:focus, 
-		input[type=email]:focus, 
-		input[type=number]:focus, 
-		[type=text].form-control:focus, 
-		[type=password].form-control:focus, 
-		[type=email].form-control:focus, 
-		[type=tel].form-control:focus, 
-		[contenteditable].form-control:focus {
-			box-shadow: inset 0 -1px 0 transparent;
+  	textarea:focus, 
+  	textarea.form-control:focus, 
+  	input.form-control:focus, 
+  	input[type=text]:focus, 
+  	input[type=password]:focus, 
+  	input[type=email]:focus, 
+  	input[type=number]:focus, 
+  	[type=text].form-control:focus, 
+  	[type=password].form-control:focus, 
+  	[type=email].form-control:focus, 
+  	[type=tel].form-control:focus, 
+  	[contenteditable].form-control:focus {
+  		box-shadow: inset 0 -1px 0 transparent;
       outline: 0 none;
-		}
+  	}
     .two:focus{
       border: 1px solid #f9e8e5;
     }
-		.hrDesign{
-			display: block; height: .5px;
-			border: 0; border-top: .1px solid #e8554e;
-			margin: 1em 0; padding: 0;
-		}
-    </style>
+  	.hrDesign{
+  		display: block; height: .5px;
+  		border: 0; border-top: .1px solid #e8554e;
+  		margin: 1em 0; padding: 0;
+  	}
+  </style>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background: #e8554e; box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);">
