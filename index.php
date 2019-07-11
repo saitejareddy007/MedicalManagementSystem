@@ -124,13 +124,13 @@
     		}
             #mainRight{
                 transform: rotate(0deg);
-                width: 100%;
+                width: 70%;
             }
     		#pageRightContent{
                 transform: rotate(0deg);
                 top:20%;
                 left: 0;
-    			width: 90%;
+    			width: 100%;
     			min-width: 0px;
                 height: 100%;
                 margin: 0 auto;
