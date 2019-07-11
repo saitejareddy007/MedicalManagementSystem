@@ -6,7 +6,7 @@ class SearchElastic
   public function __construct(){
     $this->elasticclient = Elasticsearch\ClientBuilder::create()->build();
   }
-   public function Mapping(){
+  public function Mapping(){
     $params = [
       'index' => 'tablets',
       'body' => [
@@ -37,7 +37,7 @@ class SearchElastic
     catch(Exception $e){
       return false;
     }
-   	}
+  }
 	public function InsertData($conn){
 		$con = $conn;
 		$client = $this->elasticclient;
@@ -121,4 +121,5 @@ class SearchElastic
        return $result;
    }
 }
+?>
 
